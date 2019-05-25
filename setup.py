@@ -16,6 +16,6 @@ if not VERSION:
 setup (
     name = NAME,
     version =  VERSION,
-    package_dir={'': "package"},
+    package_dir={'': "adb"},
     packages=['']
 )
