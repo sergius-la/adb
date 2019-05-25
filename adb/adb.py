@@ -7,9 +7,9 @@ class ADB:
         pass
 
     @staticmethod
-    def get_meminfo(dev_id, ps) -> list:
+    def get_meminfo(dev_id, ps="") -> list:
         """
-        Method return dumpsys meminfo memory snapshot
+        Method return dumpsys meminfo memory snapshot, by default will return system memory
         :dev_id: device id
         :ps: pid or process name
         """
@@ -49,3 +49,9 @@ class ADB:
         """
 
         return os.popen(command).readlines()
+
+
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices()[0]
+    x = ADB.get_meminfo(dev_id)
+    print(x)        
