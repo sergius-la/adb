@@ -34,7 +34,7 @@ class ADB:
         Method return list() of connected authorized devices ids.
         """
 
-        command = "adb commands"
+        command = "adb devices"
         devices = []
         raw_out = ADB._get_terminal_output(command)
         for line in raw_out:
