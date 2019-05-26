@@ -26,7 +26,7 @@ class ADB:
         """
         command = "adb -s {dev} shell ps | grep {ps} | cut -d ' ' -f 5".format(dev=dev_id, ps=ps)
         pid = ADB._get_terminal_output(command)
-        return pid[0] if len(pid) > 0 else ""
+        return pid[0].strip() if len(pid) > 0 else ""
 
     @staticmethod
     def get_connected_devices() -> list:
@@ -53,5 +53,5 @@ class ADB:
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
-    x = ADB.get_meminfo(dev_id)
+    x = ADB.get_pid(dev_id, "com.android.vending")
     print(x)        
