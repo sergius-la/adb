@@ -7,6 +7,17 @@ class ADB:
         pass
 
     @staticmethod
+    def save_meminfo(dev_id, path, ps=""):
+        """
+        Method save meminfo into txt files
+        :path: path to save file
+        :ps: By default system, pid or package name
+        """
+        filename = "sys" if ps == "" else ps
+        command = "adb -s {dev} shell dumpsys  meminfo {ps} > {path}.txt".format(dev=dev_id, ps=ps, path = os.path.join(path, filename))
+        ADB._get_terminal_output(command)
+
+    @staticmethod
     def get_meminfo(dev_id, ps="") -> list:
         """
         Method return dumpsys meminfo memory snapshot, by default will return system memory
@@ -53,5 +64,5 @@ class ADB:
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
-    x = ADB.get_pid(dev_id, "com.android.vending")
-    print(x)        
+    ADB.save_meminfo(dev_id, "/Users/Admin/Desktop/Projects/adb", "com.android.vending")
+            
