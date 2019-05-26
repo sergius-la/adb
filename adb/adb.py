@@ -5,6 +5,18 @@ class ADB:
     @staticmethod
     def exec_adb(dev_id):
         pass
+    
+    @staticmethod
+    def swipe(dev_id, x1, y1, x2 ,y2):
+        """
+        Method for swipe by coordinates
+        """
+
+        command = "adb -s {dev_id} shell input swipe {x1} {y1} {x2} {y2}".format(dev_id=dev_id, x1=x1, y1=y1, x2=x2, y2=y2)
+        output = ADB._get_terminal_output(command)
+        if len(output) > 0:
+            print(output)
+
 
     @staticmethod
     def save_meminfo(dev_id, path, ps=""):
@@ -15,7 +27,9 @@ class ADB:
         """
         filename = "sys" if ps == "" else ps
         command = "adb -s {dev} shell dumpsys  meminfo {ps} > {path}.txt".format(dev=dev_id, ps=ps, path = os.path.join(path, filename))
-        ADB._get_terminal_output(command)
+        output = ADB._get_terminal_output(command)
+        if len(output) > 0:
+            print(output)
 
     @staticmethod
     def get_meminfo(dev_id, ps="") -> list:
@@ -64,5 +78,5 @@ class ADB:
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
-    ADB.save_meminfo(dev_id, "/Users/Admin/Desktop/Projects/adb", "com.android.vending")
+    ADB.swipe(dev_id, 370, 1200, 370, 160)
             
