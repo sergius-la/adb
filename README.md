@@ -1,11 +1,16 @@
 # ADB Commands
 
-## Commands:
-    - TODO: tap
-    - TODO: log
+## Structure
 
-    - get_meminfo
-    - save_meminfo
-    - swipe
-    - get_pid
-    - get_connected_devices
+### ToDo: ADB(abstruct)
+- __ToDo: User actions:__
+    - tap(x, y)
+    - stipe()
+- __ToDo: Device manipulations__
+
+## Old:~ Commands:
+- get_meminfo
+- save_meminfo
+- swipe
+- get_pid
+- get_connected_devices
