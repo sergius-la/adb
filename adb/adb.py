@@ -1,6 +1,17 @@
 import os
 
 class ADB:
+    """
+    TODO: Refactor ADB executing
+    TODO: Make ADB abstract
+    TODO: User Actions Class
+    TODO: Device Manipulation
+    TODO: Add Unit Tests
+    TODO: Device manipulation
+        - Bluetoth On/Off
+        - Screen brighnes
+    TODO: Dump UI layout
+    """
 
     @staticmethod
     def exec_adb(dev_id):
@@ -9,7 +20,8 @@ class ADB:
     @staticmethod
     def swipe(dev_id, x1, y1, x2 ,y2):
         """
-        Method for swipe by coordinates
+        User actions 
+            - Method for swipe by coordinates
         """
 
         command = "adb -s {dev_id} shell input swipe {x1} {y1} {x2} {y2}".format(dev_id=dev_id, x1=x1, y1=y1, x2=x2, y2=y2)
@@ -17,6 +29,18 @@ class ADB:
         if len(output) > 0:
             print(output)
 
+    @staticmethod
+    def tap(dev_id, x, y):
+        """
+        User actions
+            - Method for tap by coordinates
+        TODO: Test
+        """
+
+        command = "adb -s {dev_id} shell inout tap {x} {y}".format(dev_id=dev_id, x=x, y=y)
+        output = ADB._get_terminal_output(command)
+        if len(output) > 0:
+            print(output)
 
     @staticmethod
     def save_meminfo(dev_id, path, ps=""):
@@ -24,6 +48,7 @@ class ADB:
         Method save meminfo into txt files
         :path: path to save file
         :ps: By default system, pid or package name
+        TODO: Refactor, add Utility 
         """
         filename = "sys" if ps == "" else ps
         command = "adb -s {dev} shell dumpsys  meminfo {ps} > {path}.txt".format(dev=dev_id, ps=ps, path = os.path.join(path, filename))
