@@ -2,8 +2,9 @@
 
 ## Structure
 
+- [ ] User actions:
 ### ToDo: ADB(abstruct)
-- __ToDo: User actions:__
+- [ ] User actions:
     - tap(x, y)
     - stipe()
 - __ToDo: Device manipulations__
