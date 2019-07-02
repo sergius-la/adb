@@ -3,14 +3,16 @@ import os
 class ADB:
     """
     TODO: Make ADB abstract
+
     TODO: User Actions Class
-    TODO: Device Manipulation
-    TODO: Grand / Revoke Permissions - https://stackoverflow.com/questions/16410167/how-do-i-use-adb-grant-or-adb-revoke
-    TODO: Add Unit Tests
+    
     TODO: Device manipulation
         - Bluetoth On/Off
         - Screen brighnes
-    TODO: Dump UI layout
+        - Grand / Revoke Permissions - https://stackoverflow.com/questions/16410167/how-do-i-use-adb-grant-or-adb-revoke
+
+    TODO: Device Information
+        - DUMP layout
     """
 
     @staticmethod
