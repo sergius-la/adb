@@ -2,10 +2,10 @@ import os
 
 class ADB:
     """
-    TODO: Refactor ADB executing
     TODO: Make ADB abstract
     TODO: User Actions Class
     TODO: Device Manipulation
+    TODO: Grand / Revoke Permissions - https://stackoverflow.com/questions/16410167/how-do-i-use-adb-grant-or-adb-revoke
     TODO: Add Unit Tests
     TODO: Device manipulation
         - Bluetoth On/Off
