@@ -9,6 +9,12 @@ Python package for executing adb commands.
 Install with PIP <br>
 `pip install git+https://github.com/sergius-la/adb.git`
 
+Usage example:
+```python
+dev_id = ADB.get_connected_devices()[0]
+ADB.swipe(dev_id, 370, 1200, 370, 160)
+```
+
 ## Commands
 - __ADB:__
   - get_connected_devices()
