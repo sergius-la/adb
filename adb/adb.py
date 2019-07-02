@@ -14,8 +14,10 @@ class ADB:
     """
 
     @staticmethod
-    def exec_adb(dev_id):
-        pass
+    def exec_adb(command):
+        output = ADB._get_terminal_output(command)
+        if len(output) > 0:
+            print(output)
     
     @staticmethod
     def swipe(dev_id, x1, y1, x2 ,y2):
@@ -25,9 +27,7 @@ class ADB:
         """
 
         command = "adb -s {dev_id} shell input swipe {x1} {y1} {x2} {y2}".format(dev_id=dev_id, x1=x1, y1=y1, x2=x2, y2=y2)
-        output = ADB._get_terminal_output(command)
-        if len(output) > 0:
-            print(output)
+        exec_adb(command)
 
     @staticmethod
     def tap(dev_id, x, y):
@@ -38,9 +38,7 @@ class ADB:
         """
 
         command = "adb -s {dev_id} shell inout tap {x} {y}".format(dev_id=dev_id, x=x, y=y)
-        output = ADB._get_terminal_output(command)
-        if len(output) > 0:
-            print(output)
+        exec_adb(command)
 
     @staticmethod
     def save_meminfo(dev_id, path, ps=""):
@@ -52,9 +50,7 @@ class ADB:
         """
         filename = "sys" if ps == "" else ps
         command = "adb -s {dev} shell dumpsys  meminfo {ps} > {path}.txt".format(dev=dev_id, ps=ps, path = os.path.join(path, filename))
-        output = ADB._get_terminal_output(command)
-        if len(output) > 0:
-            print(output)
+        exec_adb(command)
 
     @staticmethod
     def get_meminfo(dev_id, ps="") -> list:
