@@ -8,7 +8,6 @@ class ADB:
     
     TODO: Device manipulation
         - Bluetoth On/Off
-        - Screen brighnes
         - Grand / Revoke Permissions - https://stackoverflow.com/questions/16410167/how-do-i-use-adb-grant-or-adb-revoke
 
     TODO: Device Information
@@ -89,6 +88,28 @@ class ADB:
             if "device" in line and "devices" not in line:
                 devices.append(line.split()[0])
         return devices
+
+    """
+    Device Manipulation
+    """
+    
+    @staticmethod
+    def set_screen_brightness(dev_id: str, value):
+        """
+        Method to change screen brightness on the device in range - 0 to 255
+        """
+        
+        if value > 255:
+            value = 255
+        if value < 0:
+            value = 0
+
+        command = "adb -s {dev_id} shell settings put system screen_brightness {value}".format(dev_id=dev_id, value=value)
+        ADB.exec_adb(command)
+
+    """
+    Device Manipulation
+    """
     
     @staticmethod
     def _get_terminal_output(command: str) -> list:
@@ -101,5 +122,8 @@ class ADB:
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
-    ADB.swipe(dev_id, 370, 1200, 370, 160)
+    # ADB.swipe(dev_id, 370, 1200, 370, 160)
+    print(dev_id)
+    ADB.set_screen_brightness(dev_id, -10)
+    ADB.set_screen_brightness(dev_id, 300)
             
