@@ -90,6 +90,19 @@ class ADB:
         return devices
 
     """
+    Package Information
+    """
+
+    @staticmethod
+    def get_list_packages(dev_id: str) -> list:
+        command = "adb -s {dev_id} shell pm list packages".format(dev_id=dev_id)
+        raw_packages = ADB._get_terminal_output(command)
+        return [x.strip() for x in raw_packages]
+    """
+    Package Information
+    """
+
+    """
     Device Manipulation
     """
     
@@ -122,8 +135,9 @@ class ADB:
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
-    # ADB.swipe(dev_id, 370, 1200, 370, 160)
-    print(dev_id)
-    ADB.set_screen_brightness(dev_id, -10)
-    ADB.set_screen_brightness(dev_id, 300)
+    print("I: Working with {}".format(dev_id))
+    packages = ADB.get_list_packages(dev_id)
+    for pac in packages:
+        print(pac)
+    
             
