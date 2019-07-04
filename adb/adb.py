@@ -11,7 +11,9 @@ class ADB:
         - Grand / Revoke Permissions - https://stackoverflow.com/questions/16410167/how-do-i-use-adb-grant-or-adb-revoke
 
     TODO: Device Information
-        - DUMP layout
+        - DUMP layout, Save layout
+
+    TODO: Push File
     """
 
     """
@@ -51,7 +53,28 @@ class ADB:
     """
 
     """
-    Device Actions
+    Device - Files
+    """
+
+    @staticmethod
+    def pull(dev_id: str, path_from: str, path_to: str):
+        """
+        Print ADB pull execution into terminal
+        :dev_id: device id
+        :path_from: Path to file on the device
+        :path_to: Path to save a file
+        """
+
+        command = "adb -s {dev_id} pull {path_from} {path_to}".format(dev_id=dev_id, path_from=path_from, path_to=path_to)
+        output = ADB._get_terminal_output(command)
+        print(output)
+
+    """
+    Device - Files
+    """
+
+    """
+    Device - Actions
     """
 
     @staticmethod
@@ -76,11 +99,11 @@ class ADB:
         exec_adb(command)
 
     """
-    Device Actions
+    Device - Actions
     """
 
     """
-    Device Information
+    Device - Information
     """
 
     @staticmethod
@@ -118,7 +141,27 @@ class ADB:
         return pid[0].strip() if len(pid) > 0 else ""
 
     """
-    Device Information
+    Layout
+
+    https://stackoverflow.com/questions/26586685/is-there-a-way-to-get-current-activitys-layout-and-views-via-adb
+    """
+
+    @staticmethod
+    def _dump_layout(dev_id: str) -> str:
+        """
+        Helper method using uiautomator to dump screen layout and Return path to it
+        :dev_id: device id
+        """
+
+        command = "adb -s {dev_id} shell uiautomator dump".format(dev_id=dev_id)
+        raw_path = ADB._get_terminal_output(command)[0].strip()
+        if "UI hierchary dumped to" in raw_path:
+            return raw_path.split(":")[1].strip()
+        else:
+            print(raw_path)
+        
+    """
+    Device - Information
     """
 
     """
@@ -179,6 +222,10 @@ if __name__ == "__main__":
     # packages = ADB.get_list_packages(dev_id)
     # for pac in packages:
         # print(pac)
-    package = "com.android.systemui"
-    x = ADB.get_packahe_version(dev_id, package) 
-    print(x)   
+    
+    # package = "com.android.systemui"
+    # x = ADB.get_packahe_version(dev_id, package) 
+    # print(x)
+
+    layout = ADB._dump_layout(dev_id)   
+    print(layout)
