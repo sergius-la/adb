@@ -25,5 +25,8 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - get_PID(process_name)
   - get_meminfo(package)
   - save_meminfo(path, package)
+    - __Package info:__
+      - get_list_packages()
+      - get_packahe_version(package)
 - __Device manipulations:__
   - set_screen_brightness(0 to 255)

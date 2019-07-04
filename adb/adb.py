@@ -127,6 +127,10 @@ class ADB:
 
     @staticmethod
     def get_list_packages(dev_id: str) -> list:
+        """
+        Return a list of installed packages on the device
+        """
+
         command = "adb -s {dev_id} shell pm list packages".format(dev_id=dev_id)
         raw_packages = ADB._get_terminal_output(command)
         return [x.strip() for x in raw_packages]
@@ -135,7 +139,7 @@ class ADB:
     def get_packahe_version(dev_id: str, package: str) -> str:
         """
         Return a package version
-        
+
         :dev_id: device id
         :package: package name
         """
