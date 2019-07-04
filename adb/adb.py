@@ -14,12 +14,46 @@ class ADB:
         - DUMP layout
     """
 
+    """
+    ADB
+    """
+
     @staticmethod
     def exec_adb(command):
         output = ADB._get_terminal_output(command)
         if len(output) > 0:
             print(output)
     
+    @staticmethod
+    def get_connected_devices() -> list:
+        """
+        Method return list() of connected authorized devices ids.
+        """
+
+        command = "adb devices"
+        devices = []
+        raw_out = ADB._get_terminal_output(command)
+        for line in raw_out:
+            if "device" in line and "devices" not in line:
+                devices.append(line.split()[0])
+        return devices
+
+    @staticmethod
+    def _get_terminal_output(command: str) -> list:
+        """
+        :command: executable terminal command
+        """
+
+        return os.popen(command).readlines()
+
+    """
+    ADB
+    """
+
+    """
+    Device Actions
+    """
+
     @staticmethod
     def swipe(dev_id, x1, y1, x2 ,y2):
         """
@@ -40,6 +74,14 @@ class ADB:
 
         command = "adb -s {dev_id} shell inout tap {x} {y}".format(dev_id=dev_id, x=x, y=y)
         exec_adb(command)
+
+    """
+    Device Actions
+    """
+
+    """
+    Device Information
+    """
 
     @staticmethod
     def save_meminfo(dev_id, path, ps=""):
@@ -75,19 +117,9 @@ class ADB:
         pid = ADB._get_terminal_output(command)
         return pid[0].strip() if len(pid) > 0 else ""
 
-    @staticmethod
-    def get_connected_devices() -> list:
-        """
-        Method return list() of connected authorized devices ids.
-        """
-
-        command = "adb devices"
-        devices = []
-        raw_out = ADB._get_terminal_output(command)
-        for line in raw_out:
-            if "device" in line and "devices" not in line:
-                devices.append(line.split()[0])
-        return devices
+    """
+    Device Information
+    """
 
     """
     Package Information
@@ -98,6 +130,19 @@ class ADB:
         command = "adb -s {dev_id} shell pm list packages".format(dev_id=dev_id)
         raw_packages = ADB._get_terminal_output(command)
         return [x.strip() for x in raw_packages]
+    
+    @staticmethod
+    def get_packahe_version(dev_id: str, package: str) -> str:
+        """
+        Return a package version
+        
+        :dev_id: device id
+        :package: package name
+        """
+
+        command = "adb -s {dev_id} shell dumpsys package {package} | grep versionName".format(dev_id=dev_id, package=package)
+        return ADB._get_terminal_output(command)[0].strip().split("=")[1]
+
     """
     Package Information
     """
@@ -123,21 +168,13 @@ class ADB:
     """
     Device Manipulation
     """
-    
-    @staticmethod
-    def _get_terminal_output(command: str) -> list:
-        """
-        :command: executable terminal command
-        """
-
-        return os.popen(command).readlines()
-
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
     print("I: Working with {}".format(dev_id))
-    packages = ADB.get_list_packages(dev_id)
-    for pac in packages:
-        print(pac)
-    
-            
+    # packages = ADB.get_list_packages(dev_id)
+    # for pac in packages:
+        # print(pac)
+    package = "com.android.systemui"
+    x = ADB.get_packahe_version(dev_id, package) 
+    print(x)   
