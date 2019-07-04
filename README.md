@@ -15,6 +15,8 @@ dev_id = ADB.get_connected_devices()[0]
 ADB.swipe(dev_id, 370, 1200, 370, 160)
 ```
 
+[List of commands](https://github.com/sergius-la/Cheatsheet/blob/master/adb/adb.md)
+
 ## Commands
 - __ADB:__
   - get_connected_devices()
