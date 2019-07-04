@@ -1,4 +1,7 @@
+import os
+
 from adb import ADB
+from files import Files
 
 class Layout:
 
@@ -11,7 +14,7 @@ class Layout:
     @staticmethod
     def dump_layout(dev_id: str) -> str:
         """
-        Helper method using uiautomator to dump screen layout and Return path to it
+        Method call the uiautomator to dump screen layout and Return path to it
         :dev_id: device id
         """
 
@@ -20,4 +23,21 @@ class Layout:
         if "UI hierchary dumped to" in raw_path:
             return raw_path.split(":")[1].strip()
         else:
-            print(raw_path)
+            print("E: {}".format(raw_path))
+    
+    @staticmethod
+    def get_layout(dev_id: str, path_save: str) -> str:
+        """
+        Method save XML layout of current device screen, return path to saved file
+        """
+        
+        path_layout = Layout.dump_layout(dev_id)
+        if path_layout is not None:
+            Files.pull(dev_id, path_layout, path_save)
+            return os.path.join(path_save, path_layout.split("/")[2])
+
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices()[0]
+    print("I: Device - {}".format(dev_id))
+    path = Layout.get_layout(dev_id, "~/Desktop")
+    print(path)

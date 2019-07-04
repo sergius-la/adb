@@ -13,4 +13,4 @@ class Files:
 
         command = "adb -s {dev_id} pull {path_from} {path_to}".format(dev_id=dev_id, path_from=path_from, path_to=path_to)
         output = ADB._get_terminal_output(command)
-        print(output)
+        print("I: {}".format(output))

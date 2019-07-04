@@ -42,5 +42,5 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - TODO: Revoke permissions
 - __Layout:__
   - dump_layout()
-  - TODO: Save layout
+  - get_layout(path_save)
   - TODO: Search Element
