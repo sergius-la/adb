@@ -30,3 +30,5 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
       - get_packahe_version(package)
 - __Device manipulations:__
   - set_screen_brightness(0 to 255)
+- __Files:__
+  - pull(path_from, path_to)
