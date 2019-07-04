@@ -1,4 +1,4 @@
-# <img src="/img/py.png" width="32" height="32"> <img src="/img/adb.gif" width="32" height="32"> ADB Commands
+# <img src="/img/py.png" width="32" height="32"> ADB Commands
 
 Python package for executing adb commands.
 
