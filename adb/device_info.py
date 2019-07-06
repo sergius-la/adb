@@ -28,7 +28,7 @@ class DeviceInfo:
         return ADB._get_terminal_output(command)
     
     @staticmethod
-    def save_meminfo(dev_id, path, ps=""):
+    def save_meminfo(dev_id: str, path: str, ps=""):
         """
         Method save meminfo into txt files
         :path: path to save file
@@ -38,6 +38,22 @@ class DeviceInfo:
         filename = "sys" if ps == "" else ps
         command = "adb -s {dev} shell dumpsys meminfo {ps} > {path}.txt".format(dev=dev_id, ps=ps, path = os.path.join(path, filename))
         exec_adb(command) 
+
+    @staticmethod
+    def get_package_activity(dev_id: str) -> dict:
+        """
+        Mwthod return dict{activity, package} from curecnt screen
+        """
+
+        command = "adb -s {dev} shell dumpsys window windows | grep -E 'mCurrentFocus'".format(dev=dev_id)
+        output = ADB._get_terminal_output(command)[0]
+        if "/" in output:
+            raw = output.strip().split("/")
+            activity = raw[1][:len(raw[1]) - 1:]
+            package = raw[0].split(" ").pop()
+            return {"activity" : activity, "package" : package}
+        else:
+            print("W: {}".format(output))
 
 if __name__ == "__main__":
     system_process = "com.android.systemui"

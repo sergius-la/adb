@@ -27,7 +27,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - get_PID(process_name)
   - get_meminfo(package)
   - save_meminfo(path, package)
-  - TODO: Get currect package activity name
+  - get_package_activity()
 - __Device manipulations:__
   - set_screen_brightness(0 to 255)
   - TODO: Bluetoth On/Off
