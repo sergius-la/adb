@@ -34,7 +34,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - TODO: Screenshot
 - __Files:__
   - pull(path_from, path_to)
-  - TODO: Push File
+  - push(path_file, path_to)
 - __Package info:__
   - get_list_packages()
   - get_packahe_version(package)
