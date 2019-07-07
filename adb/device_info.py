@@ -37,7 +37,7 @@ class DeviceInfo:
         """
         filename = "sys" if ps == "" else ps
         command = "adb -s {dev} shell dumpsys meminfo {ps} > {path}.txt".format(dev=dev_id, ps=ps, path = os.path.join(path, filename))
-        exec_adb(command) 
+        ADB.exec_adb(command) 
 
     @staticmethod
     def get_package_activity(dev_id: str) -> dict:

@@ -32,6 +32,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - set_screen_brightness(0 to 255)
   - TODO: Bluetoth On/Off
   - TODO: Screenshot
+  - TODO: Screen Caption
 - __Files:__
   - pull(path_from, path_to)
   - push(path_file, path_to)
@@ -39,12 +40,12 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - get_list_packages()
   - get_packahe_version(package)
 - __TODO: Package manipulations:__
-  - TODO: Install
+  - clear_package_cache(package)
+  - install_app(path_package)
+  - start_package(package_name)
+  - close_package(package_name)
   - TODO: Grand permissions
   - TODO: Revoke permissions
-  - TODO: Start activity
-  - TODO: Stop activity
-  - TODO: Clear app cache
 - __Layout:__
   - dump_layout()
   - get_layout(path_save)
