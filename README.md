@@ -20,10 +20,11 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 ## Commands
 - __ADB:__
   - get_connected_devices()
-- __User actions:__
+- __[User actions:](/adb/user_actions.py)__
   - tap(x, y)
   - stipe(x1, y1, x2, y2)
-- __Device info:__
+  - TODO: type
+- __[Device info:](/adb/device_info.py)__
   - get_PID(process_name)
   - get_meminfo(package)
   - save_meminfo(path, package)
@@ -33,20 +34,20 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - screenshot(path_save_device)
   - TODO: Bluetoth On/Off
   - TODO: Screen Caption
-- __Files:__
+- __[Files:](/adb/files.py)__
   - pull(path_from, path_to)
   - push(path_file, path_to)
-- __Package info:__
+- __[Package info:](/adb/package_info.py)__
   - get_list_packages()
   - get_packahe_version(package)
-- __TODO: Package manipulations:__
+- __[Package manipulations:](/adb/package_manipulations.py)__
   - clear_package_cache(package)
   - install_app(path_package)
   - start_package(package_name)
   - close_package(package_name)
   - TODO: Grand permissions
   - TODO: Revoke permissions
-- __Layout:__
+- __[Layout:](/adb/layout.py)__
   - dump_layout()
   - get_layout(path_save)
   - TODO: Search Element
