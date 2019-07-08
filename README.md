@@ -28,10 +28,10 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - get_meminfo(package)
   - save_meminfo(path, package)
   - get_package_activity()
-- __Device manipulations:__
+- __[Device manipulations:](/adb/device_manipulations.py)__
   - set_screen_brightness(0 to 255)
+  - screenshot(path_save_device)
   - TODO: Bluetoth On/Off
-  - TODO: Screenshot
   - TODO: Screen Caption
 - __Files:__
   - pull(path_from, path_to)

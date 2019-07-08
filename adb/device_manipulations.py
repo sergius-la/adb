@@ -15,3 +15,14 @@ class DeviceManipulations:
 
         command = "adb -s {dev_id} shell settings put system screen_brightness {value}".format(dev_id=dev_id, value=value)
         ADB.exec_adb(command)
+    
+    @staticmethod
+    def screenshot(dev_id: str, path_save: str):
+        """
+        Make a screenshot
+
+        TODO: Test 
+        """
+
+        command = "adb -s {dev_id} shell screencap {path}".format(dev_id=dev_id, path=path_save)
+        ADB.exec_adb(command)
