@@ -32,11 +32,13 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Device manipulations:](/adb/device_manipulations.py)__
   - set_screen_brightness(0 to 255)
   - screenshot(path_save_device)
+  - get_screenshot(path_device, path_save: str, delete=False)
   - TODO: Bluetoth On/Off
   - TODO: Screen Caption
 - __[Files:](/adb/files.py)__
   - pull(path_from, path_to)
   - push(path_file, path_to)
+  - TODO: Delete file
 - __[Package info:](/adb/package_info.py)__
   - get_list_packages()
   - get_packahe_version(package)

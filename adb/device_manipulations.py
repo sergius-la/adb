@@ -1,4 +1,5 @@
 from adb import ADB
+from files import Files
 
 class DeviceManipulations:
 
@@ -26,3 +27,25 @@ class DeviceManipulations:
 
         command = "adb -s {dev_id} shell screencap {path}".format(dev_id=dev_id, path=path_save)
         ADB.exec_adb(command)
+    
+    @staticmethod
+    def get_screenshot(dev_id: str, path_device: str, path_save: str, delete=False):
+        """
+        Return path to saved screenshot file
+
+        :dev_id: Device ID
+        :path_device: Path to save on the device
+        :path_save: Path to save on the Desctop
+        :delete: - False (dafault) do not save file on the device
+                 - True save file on the device 
+
+        TODO: Test
+        TODO: Add Flag to delete file after save
+        """
+
+        DeviceManipulations.screenshot(dev_id, path_device)
+        Files.pull(dev_id, path_device, path_save)
+
+        if delete is True:
+            pass
+        
