@@ -29,3 +29,18 @@ class Files:
         command = "adb -s {dev} push {path_file} {path_to}".format(dev=dec_id, path_file=path_file, path_to=path_to)
         output = ADB._get_terminal_output(command)
         print("I: {}".format(output))
+    
+    @staticmethod
+    def delete(dev_id: str, path_file: str):
+        """
+        Method to delete file a device
+        :dev_id: Device ID
+        :path_file: Path to file
+
+        TODO: Test
+        TODO: Add check before executing
+        TODO: Add check after executing
+        """
+
+        command = "adb -s {dev} shell rm {path}".format(dev=dev_id, path=path_file)
+        ADB.exec_adb(command)
