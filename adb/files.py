@@ -16,7 +16,7 @@ class Files:
         print("I: {}".format(output))
     
     @staticmethod
-    def push(dec_id: str, path_file: str, path_to: str):
+    def push(dev_id: str, path_file: str, path_to: str):
         """
         Print ADB push execution into terminal
         :dev_id: device id
@@ -26,6 +26,21 @@ class Files:
         TODO: Check File existance before push
         """
 
-        command = "adb -s {dev} push {path_file} {path_to}".format(dev=dec_id, path_file=path_file, path_to=path_to)
+        command = "adb -s {dev} push {path_file} {path_to}".format(dev=dev_id, path_file=path_file, path_to=path_to)
         output = ADB._get_terminal_output(command)
         print("I: {}".format(output))
+
+    @staticmethod
+    def delete(dev_id: str, path_file: str):
+        """
+        Method to delete file a device
+        :dev_id: Device ID
+        :path_file: Path to file
+
+        TODO: Test
+        TODO: Add check before executing
+        TODO: Add check after executing
+        """
+
+        command = "adb -s {dev} shell rm {path}".format(dev=dev_id, path=path_file)
+        ADB.exec_adb(command)

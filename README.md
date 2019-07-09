@@ -38,7 +38,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Files:](/adb/files.py)__
   - `pull(path_from, path_to)`
   - `push(path_file, path_to)`
-  - TODO: Delete file
+  - `delete(path_file)`
 - __[Package info:](/adb/package_info.py)__
   - `get_list_packages()`
   - `get_packahe_version(package)`
