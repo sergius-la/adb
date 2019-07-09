@@ -24,6 +24,7 @@ class Files:
         :path_to: Path to save file in the device
         
         TODO: Check File existance before push
+        TODO: Test
         """
 
         command = "adb -s {dev} push {path_file} {path_to}".format(dev=dec_id, path_file=path_file, path_to=path_to)
