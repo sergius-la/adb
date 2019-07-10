@@ -35,9 +35,3 @@ class Layout:
         if path_layout is not None:
             Files.pull(dev_id, path_layout, path_save)
             return os.path.join(path_save, path_layout.split("/")[2])
-
-if __name__ == "__main__":
-    dev_id = ADB.get_connected_devices()[0]
-    print("I: Device - {}".format(dev_id))
-    path = Layout.get_layout(dev_id, "~/Desktop")
-    print(path)
