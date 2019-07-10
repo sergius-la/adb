@@ -1,0 +1,2 @@
+class TestUserActions(object):
+    pass

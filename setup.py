@@ -1,5 +1,5 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 NAME = "adb"
 VERSION = None
@@ -17,5 +17,5 @@ setup (
     name = NAME,
     version =  VERSION,
     package_dir={'': "adb"},
-    packages=['']
+    packages=find_packages()
 )

@@ -19,7 +19,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 
 ## Commands
 - __[ADB:](/adb/adb.py)__
-  - TODO: Add Unit tests
   - `get_connected_devices()`
 - __[User actions:](/adb/user_actions.py)__
   - TODO: Add Unit tests
