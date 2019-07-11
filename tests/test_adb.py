@@ -1,4 +1,4 @@
-from adb.adb import ADB
+from py_adb.adb import ADB
 
 class TestADB(object):
     
@@ -7,4 +7,5 @@ class TestADB(object):
         devices = ADB.get_connected_devices()
         print("NOTE: Execute test with connected devices")
         print("E: Found Devices {}".format(devices))
+        assert True
         assert len(devices) > 0
