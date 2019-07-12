@@ -40,7 +40,8 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `get_meminfo(package)`
   - `save_meminfo(path, package)`
   - `get_package_activity()`
-  - TODO: Android Version
+  - `get_android_version(devID)`
+  - `getprop(devID)`
   - TODO: Device Model
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`

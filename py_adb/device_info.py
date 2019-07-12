@@ -64,13 +64,32 @@ class DeviceInfo:
         command = "adb -s {dev} shell getprop ro.build.version.release ".format(dev=dev_id)
         return ADB._get_terminal_output(command)[0].strip()
 
+    @staticmethod
+    def getprop(dev_id: str) -> dict:
+        """
+        Return getprop vlues in format dict{property:value}
+
+        :dev_id: Device ID
+        """
+
+        command = "adb -s {dev} shell getprop".format(dev=dev_id)
+        raw_getprop = ADB._get_terminal_output(command)
+        dict_getprop = {}
+        for line in raw_getprop:
+            raw = line.strip().replace("[", "").replace("]", "").split(":")
+            dict_getprop[raw[0].strip()] = raw[1].strip()
+        return dict_getprop
+
+"adb shell getprop ro.product.brand"
+"adb shell getprop ro.product.model"
+
 if __name__ == "__main__":
     system_process = "com.android.systemui"
     # package =     
     dev_id = ADB.get_connected_devices()[0]
     
-
-    print(DeviceInfo.get_android_version(dev_id))
+    DeviceInfo.getprop(dev_id)
+    
     # meminfo = DeviceInfo.get_meminfo(dev_id, system_process)
     # for line in meminfo:
     #     if len(line) != 0:

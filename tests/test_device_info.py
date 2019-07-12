@@ -11,3 +11,12 @@ class TestDeviceInfo(object):
         """
 
         assert len(DeviceInfo.get_android_version(self.devices[0])) > 0
+
+    def test_getprop(self):
+        """
+        Unit test for getprop
+        """
+
+        getprop = DeviceInfo.getprop(self.devices[0])
+        assert isinstance(getprop, dict)
+        assert len(getprop) > 0
