@@ -54,12 +54,23 @@ class DeviceInfo:
             return {"activity" : activity, "package" : package}
         else:
             print("W: {}".format(output))
+    
+    @staticmethod
+    def get_android_version(dev_id: str) -> str:
+        """
+        Return android version
+        """
+
+        command = "adb -s {dev} shell getprop ro.build.version.release ".format(dev=dev_id)
+        return ADB._get_terminal_output(command)[0].strip()
 
 if __name__ == "__main__":
     system_process = "com.android.systemui"
     # package =     
     dev_id = ADB.get_connected_devices()[0]
     
+
+    print(DeviceInfo.get_android_version(dev_id))
     # meminfo = DeviceInfo.get_meminfo(dev_id, system_process)
     # for line in meminfo:
     #     if len(line) != 0:
