@@ -18,7 +18,10 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 [List of commands](https://github.com/sergius-la/Cheatsheet/blob/master/adb/adb.md)
 
 ## Cookbook
-- __[Package]()__
+- __[Info:](/py_adb/info.py)__
+    - `get_environment(package)`
+
+***
 
 ## Commands
 - __[ADB:](/py_adb/adb.py)__
@@ -42,7 +45,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
-  - `get_screenshot(path_device, path_save: str, delete=False)`
+  - `get_screenshot(path_device, path_save, delete=False)`
   - TODO: Bluetoth On/Off
   - TODO: Screen Caption
 - __[Files:](/py_adb/files.py)__
