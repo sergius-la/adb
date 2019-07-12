@@ -38,7 +38,7 @@ class PackageManipulations:
         ADB.exec_adb(command)
 
     @staticmethod
-    def start_package(dev_id, package):
+    def start_package(dev_id: str, package: str):
         """
         Method to start package
 
@@ -47,3 +47,23 @@ class PackageManipulations:
 
         command = "adb -s {dev_id} shell am startservice {package}".format(dev_id=dev_id, package=package)
         ADB.exec_adb(command)
+
+        
+    @staticmethod
+    def grant_permission(dev_id: str, package: str, permission: str):
+        """
+        Method to grant permissions for package
+
+        :dev_id: device id
+        :package: package name
+        :permission: permission
+
+        TODO: Test
+        TODO: Unit Test
+        TODO: Permissions ENUM
+        TODO: Check package existance
+        """
+
+        command = "adb -s {dev} shell pm grant {package} {permission}".format(dev=dev_id, packge=package, permission=permission)
+        out = ADB._get_terminal_output(command)
+        print(out)

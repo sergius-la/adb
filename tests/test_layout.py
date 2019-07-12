@@ -6,16 +6,17 @@ from py_adb.layout import Layout
 class TestLayout(object):
     """
     Unit Tests for Layout
-
-    TODO: Clear test_files after each test Execution
     """
 
-    test_files = os.path.join(os.path.abspath(os.path.dirname(__file__)), "test_files")   
+    test_files = os.path.join(os.path.abspath(os.path.dirname(__file__)), "test_files")
+    base_layout = "window_dump.xml"   
     
     def test_get_layout(self):
+        # TODO: Make a generator
+        os.remove(os.path.join(self.test_files, self.base_layout))
+
         dev_id = ADB.get_connected_devices()[0]
         print("I: Device - {}".format(dev_id))
         path_to_file = Layout.get_layout(dev_id, self.test_files)
         print(path_to_file)
-        assert False
         assert os.path.isfile(path_to_file)

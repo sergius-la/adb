@@ -34,7 +34,3 @@ class Layout:
         if path_layout is not None:
             Files.pull(dev_id, path_layout, path_save)
             return os.path.join(path_save, path_layout.split("/")[2])
-
-# if __name__ == "__main__":
-#     package_root = os.path.abspath(os.path.dirname(__file__))
-#     print("Root {}".format(package_root))
