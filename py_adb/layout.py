@@ -4,7 +4,6 @@ from adb import ADB
 from files import Files
 
 class Layout:
-
     """
     Layout
 

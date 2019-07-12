@@ -58,3 +58,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `dump_layout()`
   - `get_layout(path_save)`
   - TODO: Search Element
+- __[Utility:]()__
+  - `Paths`
+  - `Config`

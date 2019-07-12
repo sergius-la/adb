@@ -4,8 +4,12 @@ from py_adb.adb import ADB
 from py_adb.layout import Layout
 
 class TestLayout(object):
+    """
+    Unit Tests for Layout
 
-    # TODO: Util Path Class
+    TODO: Clear test_files after each test Execution
+    """
+
     test_files = os.path.join(os.path.abspath(os.path.dirname(__file__)), "test_files")   
     
     def test_get_layout(self):

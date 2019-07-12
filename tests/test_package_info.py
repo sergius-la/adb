@@ -1,4 +1,4 @@
-# from adb.package_info import PackageInfo
+from py_adb.package_info import PackageInfo
 
 class TestPackageInfo(object):
     pass
