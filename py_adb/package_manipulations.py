@@ -58,6 +58,9 @@ class PackageManipulations:
         :package: package name
         :permission: permission
 
+        adb shell pm grant com.name.app android.permission.READ_PROFILE
+
+
         TODO: Test
         TODO: Unit Test
         TODO: Permissions ENUM
@@ -65,5 +68,26 @@ class PackageManipulations:
         """
 
         command = "adb -s {dev} shell pm grant {package} {permission}".format(dev=dev_id, packge=package, permission=permission)
+        out = ADB._get_terminal_output(command)
+        print(out)
+
+    @staticmethod
+    def revoke_permission(dev_id: str, package: str, permission: str):
+        """
+        Method to grant permissions for package
+
+        :dev_id: device id
+        :package: package name
+        :permission: permission
+
+        adb shell pm revoke com.name.app android.permission.READ_PROFILE
+
+        TODO: Test
+        TODO: Unit Test
+        TODO: Permissions ENUM
+        TODO: Check package existance
+        """
+
+        command = "adb -s {dev} shell pm revoke {package} {permission}".format(dev=dev_id, packge=package, permission=permission)
         out = ADB._get_terminal_output(command)
         print(out)
