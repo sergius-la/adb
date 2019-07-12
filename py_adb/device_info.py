@@ -54,15 +54,6 @@ class DeviceInfo:
             return {"activity" : activity, "package" : package}
         else:
             print("W: {}".format(output))
-    
-    @staticmethod
-    def get_android_version(dev_id: str) -> str:
-        """
-        Return android version
-        """
-
-        command = "adb -s {dev} shell getprop ro.build.version.release ".format(dev=dev_id)
-        return ADB._get_terminal_output(command)[0].strip()
 
     @staticmethod
     def getprop(dev_id: str) -> dict:
@@ -79,9 +70,6 @@ class DeviceInfo:
             raw = line.strip().replace("[", "").replace("]", "").split(":")
             dict_getprop[raw[0].strip()] = raw[1].strip()
         return dict_getprop
-
-"adb shell getprop ro.product.brand"
-"adb shell getprop ro.product.model"
 
 if __name__ == "__main__":
     system_process = "com.android.systemui"
