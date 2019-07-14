@@ -13,6 +13,19 @@ class PackageInfo:
         return [x.strip() for x in raw_packages]
     
     @staticmethod
+    def is_package_exist(dev_id, package) -> bool:
+        """
+        Method check is package installed on the device
+        """
+
+        check = "package:{pack}".format(pack=package)
+        for pack in PackageInfo.get_list_packages(dev_id):
+            print(pack)
+            if check == pack.lower():
+                return True
+        return False
+    
+    @staticmethod
     def get_package_version(dev_id: str, package: str) -> str:
         """
         Return a package version
@@ -28,7 +41,12 @@ class PackageInfo:
             versions.append(ver.strip().split("=")[1])
         return versions
 
-# if __name__ == "__main__":
-#     dev_id = ADB.get_connected_devices()[0]
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices()[0]
+    # res = PackageInfo.is_package_exist(dev_id, "com.android.not_a_package")
+    # print(res)
+    # res = PackageInfo.is_package_exist(dev_id, "com.android.vending")
+    # print(res)
+
 #     ver = PackageInfo.get_package_version(dev_id, "com.android.vending")
 #     # print(ver)
