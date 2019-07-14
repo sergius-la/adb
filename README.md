@@ -45,7 +45,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
     - [All Properties](/py_adb/android_properties.py)
-  - TODO: Device Model
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`

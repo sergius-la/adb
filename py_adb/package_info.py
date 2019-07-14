@@ -13,7 +13,7 @@ class PackageInfo:
         return [x.strip() for x in raw_packages]
     
     @staticmethod
-    def get_packahe_version(dev_id: str, package: str) -> str:
+    def get_package_version(dev_id: str, package: str) -> str:
         """
         Return a package version
 
@@ -22,5 +22,13 @@ class PackageInfo:
         """
 
         command = "adb -s {dev_id} shell dumpsys package {package} | grep versionName".format(dev_id=dev_id, package=package)
-        return ADB._get_terminal_output(command)[0].strip().split("=")[1]
+        raw_out = ADB._get_terminal_output(command)
+        versions = []
+        for ver in raw_out:
+            versions.append(ver.strip().split("=")[1])
+        return versions
 
+# if __name__ == "__main__":
+#     dev_id = ADB.get_connected_devices()[0]
+#     ver = PackageInfo.get_package_version(dev_id, "com.android.vending")
+#     # print(ver)
