@@ -1,4 +1,5 @@
 from adb import ADB
+from android_prmissions import AndroidPermissions
 
 class PackageManipulations:
     
@@ -50,7 +51,7 @@ class PackageManipulations:
 
         
     @staticmethod
-    def grant_permission(dev_id: str, package: str, permission: str):
+    def grant_permission(dev_id: str, package: str, *AndroidPermissions):
         """
         Method to grant permissions for package
 
@@ -63,13 +64,13 @@ class PackageManipulations:
 
         TODO: Test
         TODO: Unit Test
-        TODO: Permissions ENUM
         TODO: Check package existance
         """
 
-        command = "adb -s {dev} shell pm grant {package} {permission}".format(dev=dev_id, packge=package, permission=permission)
-        out = ADB._get_terminal_output(command)
-        print(out)
+        for permission in AndroidPermissions:
+            command = "adb -s {dev} shell pm grant {package} {permission}".format(dev=dev_id, package=package, permission=permission.value.get("perm"))
+            out = ADB._get_terminal_output(command)
+            print(out)
 
     @staticmethod
     def revoke_permission(dev_id: str, package: str, permission: str):
@@ -91,3 +92,9 @@ class PackageManipulations:
         command = "adb -s {dev} shell pm revoke {package} {permission}".format(dev=dev_id, packge=package, permission=permission)
         out = ADB._get_terminal_output(command)
         print(out)
+
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices()[0]
+    package = "com.google.android.youtube"
+    # print(AndroidPermissions.CAMERA.value.get("perm"))
+    PackageManipulations.grant_permission(dev_id, package, AndroidPermissions.CAMERA)

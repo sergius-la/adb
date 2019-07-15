@@ -65,6 +65,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `close_package(package_name)`
   - `grant_permission(package_name, permissions)`
   - `revoke_permission(package_name, permissions)`
+- __[Packages]()__
 - __[Layout:](/py_adb/layout.py)__
   - `dump_layout()`
   - `get_layout(path_save)`

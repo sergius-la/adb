@@ -91,6 +91,8 @@ if __name__ == "__main__":
     # system_process = "com.android.systemui"
     dev_id = ADB.get_connected_devices()[0]
     
-    print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))
+    pa = DeviceInfo.get_package_activity(dev_id)
+    print(pa)
+    # print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))
     # DeviceInfo.get_prop(dev_id, Properties.BRAND, Properties.MODEL)
 
