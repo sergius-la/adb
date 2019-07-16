@@ -1,13 +1,4 @@
-class Packages:
-    """
-    Class for Standart and popular packages
+from enum import Enum
 
-    TODO: ENUM with packages
-    TODO: getPackageName
-    TODO: getPackageID
-    TODO: DICT package Activs
-
-    com.google.android.youtube
-    """
-
-    pass
+class Packages(Enum):
+    YOUTUBE = {"name": "Youtube", "package":"com.google.android.youtube"}
