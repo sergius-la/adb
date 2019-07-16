@@ -1,5 +1,5 @@
-from adb import ADB
-from android_properties import Properties
+from py_adb.adb import ADB
+from py_adb.android_properties import Properties
 
 class DeviceInfo:
 
@@ -73,24 +73,28 @@ class DeviceInfo:
         return dict_getprop
     
     @staticmethod
-    def get_prop(dev_id, *Properties):
+    def get_prop(dev_id, *Properties) -> dict:
         """
         Print selected properties
 
         :dev_id: Device ID
         :Properties: properties
         """
-
+        
+        device_info = {}
         all_prop = DeviceInfo.all_getprop(dev_id)
         for pr in Properties:
             prop = all_prop.get(pr.value.get("prop"))
             name = pr.value.get("name")
-            print("{} {}".format(name, prop))
+            device_info[name] = prop
+        return device_info
 
 if __name__ == "__main__":
     # system_process = "com.android.systemui"
     dev_id = ADB.get_connected_devices()[0]
     
-    print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))
+    pa = DeviceInfo.get_package_activity(dev_id)
+    print(pa)
+    # print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))
     # DeviceInfo.get_prop(dev_id, Properties.BRAND, Properties.MODEL)
 

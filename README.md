@@ -40,11 +40,13 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `get_meminfo(package)`
   - `save_meminfo(path, package)`
   - `get_package_activity()`
-  - `get_android_version(Device ID)`
-  - `getprop(Device ID)`
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
     - [All Properties](/py_adb/android_properties.py)
+      - Android Version
+      - Device Brand
+      - Device Model
+      - TODO
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
@@ -65,6 +67,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `close_package(package_name)`
   - `grant_permission(package_name, permissions)`
   - `revoke_permission(package_name, permissions)`
+- __[Packages]()__
 - __[Layout:](/py_adb/layout.py)__
   - `dump_layout()`
   - `get_layout(path_save)`

@@ -1,5 +1,6 @@
 from py_adb.device_info import DeviceInfo
 from py_adb.adb import ADB
+from py_adb.android_properties import Properties
 
 class TestDeviceInfo(object):
     
@@ -8,15 +9,20 @@ class TestDeviceInfo(object):
     def test_android_version(self):
         """
         Unit test for Android version
+        Return Example - Android Version 6.0.1
         """
 
-        assert len(DeviceInfo.get_android_version(self.devices[0])) > 0
+        android_version = DeviceInfo.get_prop(self.devices[0], Properties.ANDROID_VERSION)
+        print(android_version)
+        assert isinstance(android_version, dict)
+        version = android_version.get("Android Version") 
+        assert len(version) > 0
 
     def test_getprop(self):
         """
-        Unit test for getprop
+        Unit test for all getprop shoud return in dict
         """
 
-        getprop = DeviceInfo.getprop(self.devices[0])
+        getprop = DeviceInfo.all_getprop(self.devices[0])
         assert isinstance(getprop, dict)
         assert len(getprop) > 0
