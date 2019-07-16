@@ -73,19 +73,21 @@ class DeviceInfo:
         return dict_getprop
     
     @staticmethod
-    def get_prop(dev_id, *Properties):
+    def get_prop(dev_id, *Properties) -> dict:
         """
         Print selected properties
 
         :dev_id: Device ID
         :Properties: properties
         """
-
+        
+        device_info = {}
         all_prop = DeviceInfo.all_getprop(dev_id)
         for pr in Properties:
             prop = all_prop.get(pr.value.get("prop"))
             name = pr.value.get("name")
-            print("{} {}".format(name, prop))
+            device_info[name] = prop
+        return device_info
 
 if __name__ == "__main__":
     # system_process = "com.android.systemui"
