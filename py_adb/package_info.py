@@ -1,4 +1,4 @@
-from adb import ADB
+from py_adb.adb import ADB
 
 class PackageInfo:
 

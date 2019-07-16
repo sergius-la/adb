@@ -1,8 +1,7 @@
-from adb import ADB
-from package_info import PackageInfo
-from device_info import DeviceInfo
-from android_properties import Properties
-
+from py_adb.adb import ADB
+from py_adb.package_info import PackageInfo
+from py_adb.device_info import DeviceInfo
+from py_adb.android_properties import Properties
 
 class Cockbook:
 

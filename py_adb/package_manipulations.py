@@ -1,5 +1,5 @@
-from adb import ADB
-from android_prmissions import AndroidPermissions
+from py_adb.adb import ADB
+from py_adb.android_prmissions import AndroidPermissions
 
 class PackageManipulations:
     
