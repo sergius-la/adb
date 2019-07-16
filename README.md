@@ -75,3 +75,8 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Utility:]()__
   - `Paths`
   - `Config`
+
+## Tests
+
+Run Unit test (package root) - `pytest --cov=py_adb tests/` 
+To get report - `coverage html`

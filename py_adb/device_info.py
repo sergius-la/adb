@@ -1,5 +1,5 @@
-from py_adb.adb import ADB
-from py_adb.android_properties import Properties
+from adb import ADB
+from android_properties import Properties
 
 class DeviceInfo:
 
