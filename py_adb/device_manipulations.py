@@ -49,3 +49,5 @@ class DeviceManipulations:
         if delete is True:
             pass
         
+    @staticmethod
+    def 

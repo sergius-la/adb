@@ -89,12 +89,32 @@ class DeviceInfo:
             device_info[name] = prop
         return device_info
 
+    @staticmethod
+    def get_display_size(dev_id) -> dict:
+        """
+        Return a display size in dict{'width': <str>, 'hight': <str>}
+
+        :dev_id: Device ID
+        """
+        
+        size = {}
+        command = "adb -s {dev} shell wm size".format(dev=dev_id)
+        out = ADB._get_terminal_output(command)
+        if (len(out) == 1 and "Physical size:" in out[0]):
+            raw = out[0].split("x")
+            print(raw)
+            size["width"] = raw[0].split(":")[1].strip()
+            size["hight"] = raw[1].strip()
+        else:
+            print("W: {out}".format(out=out))
+        return size
+
 if __name__ == "__main__":
     # system_process = "com.android.systemui"
     dev_id = ADB.get_connected_devices()[0]
     
-    pa = DeviceInfo.get_package_activity(dev_id)
-    print(pa)
+    size = DeviceInfo.get_display_size(dev_id)
+    print(size)
     # print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))
     # DeviceInfo.get_prop(dev_id, Properties.BRAND, Properties.MODEL)
 
