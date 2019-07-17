@@ -2,12 +2,20 @@
 
 Python package for executing adb commands.
 
-> Requirements: <br>
+[_List of adb commands_](https://github.com/sergius-la/Cheatsheet/blob/master/adb/adb.md)
+
+TODO: Add tests status
+
+## Install
+
+> __Requirements:__ <br>
 > Android SDK Tools - https://developer.android.com/studio/releases/sdk-tools <br>
 > adb - PATH variable
 
 Install with PIP <br>
 `pip install git+https://github.com/sergius-la/adb.git`
+
+## Usage
 
 Usage example:
 ```python
@@ -15,15 +23,17 @@ dev_id = ADB.get_connected_devices()[0]
 ADB.swipe(dev_id, 370, 1200, 370, 160)
 ```
 
-[List of commands](https://github.com/sergius-la/Cheatsheet/blob/master/adb/adb.md)
+- TODO: Add more examples
 
-## Cookbook
+## Package methods
+
+### Cookbook
 - __[Info:](/py_adb/info.py)__
     - `get_environment(package)`
 
 ***
 
-## Commands
+###  Commands
 - __[ADB:](/py_adb/adb.py)__
   - `get_connected_devices()`
   - TODO: Add Dependensys into setup.py
@@ -31,10 +41,11 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `tap(x, y)`
   - `stipe(x1, y1, x2, y2)`
   - `send_text(text)`
-  - TODO: OpenNotifications
-  - TODO: PressBack
-  - TODO: Apps
-  - TODO: LockDevice
+    - TODO: KeyEvent
+      - TODO: OpenNotifications
+      - TODO: PressBack
+      - TODO: Recent Apps
+      - TODO: LockDevice
 - __[Device info:](/py_adb/device_info.py)__
   - `get_PID(process_name)`
   - `get_meminfo(package)`
@@ -43,10 +54,9 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
     - [All Properties](/py_adb/android_properties.py)
-      - Android Version
-      - Device Brand
-      - Device Model
-      - TODO
+      - _`Android Version`_
+      - _`Device Brand`_
+      - _`Device Model`_
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
@@ -76,7 +86,10 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `Paths`
   - `Config`
 
-## Tests
+## Unit Tests
 
-Run Unit test (package root) - `pytest --cov=py_adb tests/` 
-To get report - `coverage html`
+> __Requirements:__ <br>
+> Connect Android Device in the Developer Mode
+
+- Run Unit test (package root) - `pytest --cov=py_adb tests/` 
+- To get report - `coverage html`
