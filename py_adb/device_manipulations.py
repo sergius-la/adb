@@ -1,5 +1,7 @@
 from adb import ADB
 from files import Files
+from user_actions import UserActions
+from device_info import DeviceInfo
 
 class DeviceManipulations:
 
@@ -50,4 +52,14 @@ class DeviceManipulations:
             pass
         
     @staticmethod
-    def 
+    def open_notificastion_center(dev_id):
+        """
+        Method perform horizontal swipe to open notification center
+        TODO: Add Check if notification center is open
+
+        :dev_id: Device ID
+        """
+        size = DeviceInfo.get_display_size(dev_id)
+        x = int(size.get("width")) / 2
+        y2 = int(size.get("hight")) / 2
+        UserActions.swipe(dev_id, x, 1, x, y2)
