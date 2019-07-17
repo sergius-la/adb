@@ -40,9 +40,6 @@ class DeviceManipulations:
         :path_save: Path to save on the Desctop
         :delete: - False (dafault) do not save file on the device
                  - True save file on the device 
-
-        TODO: Test
-        TODO: Add Flag to delete file after save
         """
 
         DeviceManipulations.screenshot(dev_id, path_device)

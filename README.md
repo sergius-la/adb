@@ -55,6 +55,8 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
   - `get_screenshot(path_device, path_save, delete=False)`
+    - TODO: Unit Test
+    - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
     - TODO: Add Check is Notification center is vivible
   - TODO: Bluetoth On/Off
@@ -75,6 +77,8 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `delete(path_file)`
 - __[Package info:](/py_adb/package_info.py)__
   - `get_list_packages()`
+  - `is_package_exist(dev_id, package)`
+    - TODO: Add Unit Test: Existing, Not Existing
   - `get_packahe_version(package)`
 - __[Package manipulations:](/py_adb/package_manipulations.py)__
   - `clear_package_cache(package)`
