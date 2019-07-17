@@ -37,20 +37,14 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[ADB:](/py_adb/adb.py)__
   - `get_connected_devices()`
   - TODO: Add Dependensys into setup.py
-- __[User actions:](/py_adb/user_actions.py)__
-  - `tap(x, y)`
-  - `stipe(x1, y1, x2, y2)`
-  - `send_text(text)`
-    - TODO: KeyEvent
-      - TODO: OpenNotifications
-      - TODO: PressBack
-      - TODO: Recent Apps
-      - TODO: LockDevice
 - __[Device info:](/py_adb/device_info.py)__
   - `get_PID(process_name)`
   - `get_meminfo(package)`
   - `save_meminfo(path, package)`
   - `get_package_activity()`
+    - TODO: Add Enum with standart Android Packages
+    - TODO: Rename getCurrent
+  - `get_display_size(Device ID)`
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
     - [All Properties](/py_adb/android_properties.py)
@@ -61,8 +55,20 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
   - `get_screenshot(path_device, path_save, delete=False)`
+  - `open_notification_center(Device_ID)`
+    - TODO: Add Check is Notification center is vivible
   - TODO: Bluetoth On/Off
   - TODO: Screen Caption
+- __[User actions:](/py_adb/user_actions.py)__
+  - TODO: Refactor Move to device Manupulations  
+  - `tap(x, y)`
+  - `stipe(x1, y1, x2, y2)`
+  - `send_text(text)`
+    - TODO: KeyEvent
+      - TODO: OpenNotifications
+      - TODO: PressBack
+      - TODO: Recent Apps
+      - TODO: LockDevice
 - __[Files:](/py_adb/files.py)__
   - `pull(path_from, path_to)`
   - `push(path_file, path_to)`
