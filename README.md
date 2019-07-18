@@ -30,6 +30,11 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 ### Cookbook
 - __[Info:](/py_adb/info.py)__
     - `get_environment(package)`
+    - `get_packages_version(AndroidPackage)`
+      __TODO:__ Create Info Class 
+      - [_All AndroidPackages_](/py_adb/android_packages.py)
+        - _`YouTube`_
+        - _`Play Store`_
 
 ***
 
@@ -42,7 +47,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `get_meminfo(package)`
   - `save_meminfo(path, package)`
   - `get_package_activity()`
-    - TODO: Add Enum with standart Android Packages
   - `get_display_size(Device ID)`
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
