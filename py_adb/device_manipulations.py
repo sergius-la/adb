@@ -1,7 +1,8 @@
-from adb import ADB
+from py_adb.adb import ADB
 from files import Files
 from user_actions import UserActions
 from device_info import DeviceInfo
+from py_adb.android_keyevent import AndroidKeyevent
 
 class DeviceManipulations:
 
@@ -60,3 +61,15 @@ class DeviceManipulations:
         x = int(size.get("width")) / 2
         y2 = int(size.get("hight")) / 2
         UserActions.swipe(dev_id, x, 1, x, y2)
+
+    @staticmethod
+    def execute_keyevent(dev_id, AndroidKeyevent):
+        """
+        Method to execute Keyevent
+
+        :dev_id: Device ID
+        :AndroidKeyevent: Android Keyevent
+        """
+
+        command = "adb -s {dev_id} shell input keyevent {keycode}".format(dev_id=dev_id,  keycode=AndroidKeyevent.value.get("key_code"))
+        ADB.exec_adb(command)

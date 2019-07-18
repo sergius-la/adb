@@ -43,14 +43,13 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `save_meminfo(path, package)`
   - `get_package_activity()`
     - TODO: Add Enum with standart Android Packages
-    - TODO: Rename getCurrent
   - `get_display_size(Device ID)`
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
-    - [All Properties](/py_adb/android_properties.py)
-      - _`Android Version`_
-      - _`Device Brand`_
-      - _`Device Model`_
+  - [All Properties](/py_adb/android_properties.py)
+    - _`Android Version`_
+    - _`Device Brand`_
+    - _`Device Model`_
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
@@ -66,11 +65,9 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `tap(x, y)`
   - `stipe(x1, y1, x2, y2)`
   - `send_text(text)`
-    - TODO: KeyEvent
-      - TODO: OpenNotifications
-      - TODO: PressBack
-      - TODO: Recent Apps
-      - TODO: LockDevice
+  - [_All Keyevent_](/py_adb/android_keyevent.py)
+    - TODO: Recent Apps
+    - TODO: LockDevice
 - __[Files:](/py_adb/files.py)__
   - `pull(path_from, path_to)`
   - `push(path_file, path_to)`
