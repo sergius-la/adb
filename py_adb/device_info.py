@@ -41,7 +41,7 @@ class DeviceInfo:
         ADB.exec_adb(command) 
 
     @staticmethod
-    def get_package_activity(dev_id: str) -> dict:
+    def get_current_activity(dev_id: str) -> dict:
         """
         Mwthod return dict{activity, package} from curecnt screen
         """
