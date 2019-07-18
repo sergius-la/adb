@@ -33,6 +33,27 @@ class Cockbook:
             package_versions = PackageInfo.get_package_version(dev_id, package)
             for version in package_versions:
                 print("Version - {ver}".format(pac=package, ver=version))
+        
+        @staticmethod
+        def get_packages_version(dev_id: str, *AndroidKPackages) -> dict:
+            """
+            Return a dict{package:<App Name - str>, version:<str>/<list>}
+
+            :dev_id: Device ID
+            :*AndroidKPackage: AndroidPackage(enum)
+            """
+
+            versions = {}
+            for package in AndroidKPackages:
+                packID = package.value.get("package")
+                print(packID)
+                app_name = package.value.get("App Name")
+                print(app_name)
+                pack_version = PackageInfo.get_package_version(dev_id, packID)
+                print(pack_version)
+                versions[package] = app_name
+                versions["version"] = pack_version
+            return versions
 
 if __name__ == "__main__":
     package = "com.android.vending"

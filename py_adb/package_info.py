@@ -1,4 +1,5 @@
-from py_adb.adb import ADB
+from adb import ADB
+from android_packages import AndroidKPackage
 
 class PackageInfo:
 
@@ -43,10 +44,5 @@ class PackageInfo:
 
 if __name__ == "__main__":
     dev_id = ADB.get_connected_devices()[0]
-    # res = PackageInfo.is_package_exist(dev_id, "com.android.not_a_package")
-    # print(res)
-    # res = PackageInfo.is_package_exist(dev_id, "com.android.vending")
-    # print(res)
 
-#     ver = PackageInfo.get_package_version(dev_id, "com.android.vending")
-#     # print(ver)
+    # x = PackageInfo.get_packages_version(dev_id, AndroidKPackage.YOUTUBE)

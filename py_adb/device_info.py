@@ -113,8 +113,10 @@ if __name__ == "__main__":
     # system_process = "com.android.systemui"
     dev_id = ADB.get_connected_devices()[0]
     
-    size = DeviceInfo.get_display_size(dev_id)
-    print(size)
+    x = DeviceInfo.get_current_activity(dev_id)
+    print(x)
+    # size = DeviceInfo.get_display_size(dev_id)
+    # print(size)
     # print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))
     # DeviceInfo.get_prop(dev_id, Properties.BRAND, Properties.MODEL)
 
