@@ -46,7 +46,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `get_display_size(Device ID)`
   - `all_getprop(Device ID)`
   - `get_prop(Device ID, Properties)`
-  - [All Properties](/py_adb/android_properties.py)
+  - [_All Properties_](/py_adb/android_properties.py)
     - _`Android Version`_
     - _`Device Brand`_
     - _`Device Model`_
@@ -66,6 +66,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `stipe(x1, y1, x2, y2)`
   - `send_text(text)`
   - [_All Keyevent_](/py_adb/android_keyevent.py)
+    - _`BACK`_
     - TODO: Recent Apps
     - TODO: LockDevice
 - __[Files:](/py_adb/files.py)__
@@ -75,7 +76,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Package info:](/py_adb/package_info.py)__
   - `get_list_packages()`
   - `is_package_exist(dev_id, package)`
-    - TODO: Add Unit Test: Existing, Not Existing
   - `get_packahe_version(package)`
 - __[Package manipulations:](/py_adb/package_manipulations.py)__
   - `clear_package_cache(package)`
