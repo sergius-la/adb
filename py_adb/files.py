@@ -1,5 +1,7 @@
 from adb import ADB
 
+import os
+
 class Files:
     
     @staticmethod
@@ -45,3 +47,14 @@ class Files:
 
         command = "adb -s {dev} shell rm {path}".format(dev=dev_id, path=path_file)
         ADB.exec_adb(command)
+
+    @staticmethod
+    def clear_dir(path: str):
+        """
+        Method to clear all files in the dir
+        """
+
+        assert os.path.isdir(path)
+        files = os.listdir(path)
+        for f in files:
+            os.remove(f)

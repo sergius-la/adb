@@ -56,7 +56,9 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Device manipulations:](/py_adb/device_manipulations.py)__
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
-  - `get_screenshot(path_device, path_save, delete=False)`
+  - `save_screenshot(path_device, path_save, delete=False)`
+    - TODO: Path Clas
+    - TODO: Name generator
     - TODO: Unit Test
     - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
