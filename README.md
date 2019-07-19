@@ -31,8 +31,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Info:](/py_adb/info.py)__
     - `get_environment(package)`
     - `get_packages_version(AndroidPackage)`
-      __TODO:__ Create Info Class
-      __TODO:__ Fix Unit tests 
       - [_All AndroidPackages_](/py_adb/android_packages.py)
         - _`YouTube`_
         - _`Play Store`_
@@ -63,7 +61,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
     - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
     - TODO: Add Check is Notification center is vivible
-  - TODO: Bluetoth On/Off
   - TODO: Screen Caption
 - __[User actions:](/py_adb/user_actions.py)__
   - TODO: Refactor Move to device Manupulations  
