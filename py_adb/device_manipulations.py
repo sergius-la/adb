@@ -32,7 +32,7 @@ class DeviceManipulations:
         ADB.exec_adb(command)
     
     @staticmethod
-    def get_screenshot(dev_id: str, path_device: str, path_save: str, delete=False):
+    def save_screenshot(dev_id: str, path_device: str, path_save: str, delete=False):
         """
         Return path to saved screenshot file
 
