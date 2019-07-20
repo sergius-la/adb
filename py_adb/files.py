@@ -1,4 +1,4 @@
-from adb import ADB
+from py_adb.adb import ADB
 
 import os
 
@@ -56,5 +56,7 @@ class Files:
 
         assert os.path.isdir(path)
         files = os.listdir(path)
+        print(files)
         for f in files:
-            os.remove(f)
+            if os.path.isfile(os.path.join(path, f)): 
+                os.remove(os.path.join(path, f))

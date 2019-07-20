@@ -59,7 +59,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `save_screenshot(path_device, path_save, delete=False)`
     - TODO: Path Clas
     - TODO: Name generator
-    - TODO: Unit Test
     - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
     - TODO: Add Check is Notification center is vivible
@@ -93,7 +92,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `dump_layout()`
   - `get_layout(path_save)`
   - TODO: Search Element
-- __[Utility:]()__
+- __[TODO: Utility:]()__
   - `Paths`
   - `Config`
 
