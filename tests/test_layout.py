@@ -2,6 +2,7 @@ import os
 
 from py_adb.adb import ADB
 from py_adb.layout import Layout
+from py_adb.files import Files
 
 class TestLayout(object):
     """
@@ -13,7 +14,7 @@ class TestLayout(object):
     
     def test_get_layout(self):
         # TODO: Make a generator
-        os.remove(os.path.join(self.test_files, self.base_layout))
+        Files.clear_dir(self.test_files)
 
         dev_id = ADB.get_connected_devices()[0]
         print("I: Device - {}".format(dev_id))

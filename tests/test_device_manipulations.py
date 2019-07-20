@@ -12,25 +12,25 @@ class TestDeviceManipulations(object):
     devices = ADB.get_connected_devices()
     dev_id = devices[0]
 
-    # def test_open_close_notification_center(self):
-    #     """
-    #     Unit test to Perform open and close Notification Center
-    #     """
+    def test_open_close_notification_center(self):
+        """
+        Unit test to Perform open and close Notification Center
+        """
 
-    #     dev_id = self.devices[0]
+        dev_id = self.devices[0]
 
-    #     main = DeviceInfo.get_current_activity(self.devices[0])
-    #     print(main)
-    #     android_version = DeviceManipulations.open_notificastion_center(self.devices[0])
-    #     notif = DeviceInfo.get_current_activity(self.devices[0])
-    #     print(notif)
+        main = DeviceInfo.get_current_activity(self.devices[0])
+        print(main)
+        android_version = DeviceManipulations.open_notificastion_center(self.devices[0])
+        notif = DeviceInfo.get_current_activity(self.devices[0])
+        print(notif)
 
-    #     out = DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.BACK)
+        out = DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.BACK)
 
-    #     main = DeviceInfo.get_current_activity(self.devices[0])
-    #     print(main)
+        main = DeviceInfo.get_current_activity(self.devices[0])
+        print(main)
 
-    #     assert False
+        assert False
     
     def test_save_screenshot(self):
         """
@@ -42,6 +42,5 @@ class TestDeviceManipulations(object):
 
         Files.clear_dir(self.test_files_dir)
 
-        # DeviceManipulations.save_screenshot(self.dev_id, "/sdcard/sc2.png", self.test_files_dir)
-        # assert os.path.isfile(os.path.join(self.test_files, test_file_name))
-        assert False
+        DeviceManipulations.save_screenshot(self.dev_id, "/sdcard/sc2.png", self.test_files_dir)
+        assert os.path.isfile(os.path.join(self.test_files_dir, test_file_name))
