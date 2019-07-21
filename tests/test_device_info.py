@@ -27,8 +27,8 @@ class TestDeviceInfo(object):
         assert isinstance(getprop, dict)
         assert len(getprop) > 0
     
-    def test_get_device_state(self):
+    def test_is_locked(self):
 
-        res = DeviceInfo.get_device_state(self.devices[0])
+        res = DeviceInfo.is_locked(self.devices[0])
         print(res)
         assert False
