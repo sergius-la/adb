@@ -39,10 +39,6 @@ class Files:
         Method to delete file a device
         :dev_id: Device ID
         :path_file: Path to file
-
-        TODO: Test
-        TODO: Add check before executing
-        TODO: Add check after executing
         """
 
         command = "adb -s {dev} shell rm {path}".format(dev=dev_id, path=path_file)
@@ -56,7 +52,6 @@ class Files:
 
         assert os.path.isdir(path)
         files = os.listdir(path)
-        print(files)
         for f in files:
             if os.path.isfile(os.path.join(path, f)): 
                 os.remove(os.path.join(path, f))

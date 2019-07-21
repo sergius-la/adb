@@ -1,5 +1,5 @@
 from adb import ADB
-from android_properties import Properties
+from py_adb.android_properties import Properties
 
 class DeviceInfo:
 
@@ -108,6 +108,28 @@ class DeviceInfo:
         else:
             print("W: {out}".format(out=out))
         return size
+
+    @staticmethod
+    def get_device_state(dev_id) -> dict:
+        """
+        Return device state
+        mHoldingDisplaySuspendBlocke - displayOn
+        mHoldingWakeLockSuspendBlocker - unlocked
+        NOTE: Not working correctly
+
+        :dev_id: Device ID
+        """
+
+        command = "adb -s {dev} shell dumpsys power | grep 'mHolding'".format(dev=dev_id)
+        out = ADB._get_terminal_output(command)
+        res = {}
+        for line in out:
+            raw = line.strip().split("=")
+            if "mHoldingDisplaySuspendBlocke" in raw[0]:
+                res["displayOn"] = False if raw[1] == "false" else True
+            if "mHoldingWakeLockSuspendBlocker" in raw[0]:
+                res["unlocked"] = False if raw[1] == "false" else True
+        return res
 
 if __name__ == "__main__":
     # system_process = "com.android.systemui"

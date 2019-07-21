@@ -57,12 +57,11 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `set_screen_brightness(0 to 255)`
   - `screenshot(path_save_device)`
   - `save_screenshot(path_device, path_save, delete=False)`
-    - TODO: Path Clas
     - TODO: Name generator
     - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
     - TODO: Add Check is Notification center is vivible
-  - TODO: Screen Caption
+    - TODO: Screen Caption
 - __[User actions:](/py_adb/user_actions.py)__
   - TODO: Refactor Move to device Manupulations  
   - `tap(x, y)`
@@ -76,6 +75,10 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `pull(path_from, path_to)`
   - `push(path_file, path_to)`
   - `delete(path_file)`
+      - TODO: Test
+      - TODO: Add check before executing
+      - TODO: Add check after executing
+  - `clear_dir(path_dir)`
 - __[Package info:](/py_adb/package_info.py)__
   - `get_list_packages()`
   - `is_package_exist(dev_id, package)`
@@ -83,15 +86,19 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Package manipulations:](/py_adb/package_manipulations.py)__
   - `clear_package_cache(package)`
   - `install_app(path_package)`
+    - TODO: App ENUM Flags -d, -r
+    - TODO: Test
+    - TODO: Check path
   - `start_package(package_name)`
   - `close_package(package_name)`
+    - TODO: Test
   - `grant_permission(package_name, permissions)`
   - `revoke_permission(package_name, permissions)`
 - __[Packages]()__
 - __[Layout:](/py_adb/layout.py)__
   - `dump_layout()`
   - `get_layout(path_save)`
-  - TODO: Search Element
+    - TODO: Search Element
 - __[TODO: Utility:]()__
   - `Paths`
   - `Config`
