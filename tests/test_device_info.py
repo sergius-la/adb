@@ -26,3 +26,9 @@ class TestDeviceInfo(object):
         getprop = DeviceInfo.all_getprop(self.devices[0])
         assert isinstance(getprop, dict)
         assert len(getprop) > 0
+    
+    def test_get_device_state(self):
+
+        res = DeviceInfo.get_device_state(self.devices[0])
+        print(res)
+        assert False

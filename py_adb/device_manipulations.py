@@ -73,3 +73,13 @@ class DeviceManipulations:
 
         command = "adb -s {dev_id} shell input keyevent {keycode}".format(dev_id=dev_id,  keycode=AndroidKeyevent.value.get("key_code"))
         ADB.exec_adb(command)
+    
+    @staticmethod
+    def lock_device(dev_id: str):
+        """
+        Method to lock the device
+
+        :dev_id: Device ID
+        """
+
+        DeviceManipulations.lock_device(dev_id, AndroidKeyevent.POWER_BUTTON)
