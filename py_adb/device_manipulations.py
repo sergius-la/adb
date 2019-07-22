@@ -1,8 +1,13 @@
 from py_adb.adb import ADB
 from files import Files
-from user_actions import UserActions
-from device_info import DeviceInfo
+from py_adb.user_actions import UserActions
+from py_adb.device_info import DeviceInfo
 from py_adb.android_keyevent import AndroidKeyevent
+
+from enum import Enum, auto
+
+class UnlockType(Enum):
+    SWIPE = auto()
 
 class DeviceManipulations:
 
@@ -83,3 +88,22 @@ class DeviceManipulations:
         """
 
         DeviceManipulations.lock_device(dev_id, AndroidKeyevent.POWER_BUTTON)
+    
+    @staticmethod
+    def unlock_device(dev_id: str, UnlockType):
+        """
+        Method to unlock the device
+
+        :dev_id: Device ID
+        """
+
+        is_locked = device_info.is_locked(dev_id)
+        if is_locked:
+            DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.WAKEUP)
+            if UnlockType.SWIPE:
+                # dict{'width': <str>, 'hight': <str>}
+                display_sie = DeviceInfo.get_display_size(dev_id)
+                x = display_sie.get("width")/2
+                y1 = display_sie.get("hight")
+                UserActions.swipe(dev_id, x, y1, x, y1/2)
+

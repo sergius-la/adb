@@ -45,10 +45,18 @@ class TestDeviceManipulations(object):
         DeviceManipulations.save_screenshot(self.dev_id, "/sdcard/sc2.png", self.test_files_dir)
         assert os.path.isfile(os.path.join(self.test_files_dir, test_file_name))
     
-    def test_lock_device(self):
+    # def test_lock_device(self):
+    #     """
+    #     Unit test for device lock
+    #     """
+
+    #     DeviceManipulations.lock_device(self.dev_id)
+    #     assert False
+    
+    def test_unlock_device(self):
         """
-        Unit test for device lock
+        Unit test for unlock the device
         """
 
-        DeviceManipulations.lock_device(self.dev_id)
+        DeviceManipulations.unlock_device(self.dev_id)
         assert False
