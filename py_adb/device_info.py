@@ -103,8 +103,8 @@ class DeviceInfo:
         if (len(out) == 1 and "Physical size:" in out[0]):
             raw = out[0].split("x")
             print(raw)
-            size["width"] = raw[0].split(":")[1].strip()
-            size["hight"] = raw[1].strip()
+            size["width"] = int(raw[0].split(":")[1].strip())
+            size["hight"] = int(raw[1].strip())
         else:
             print("W: {out}".format(out=out))
         return size

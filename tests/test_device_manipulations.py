@@ -1,4 +1,4 @@
-from py_adb.device_manipulations import DeviceManipulations
+from py_adb.device_manipulations import DeviceManipulations, UnlockType
 from py_adb.android_keyevent import AndroidKeyevent
 from py_adb.device_info import DeviceInfo
 from py_adb.files import Files
@@ -17,6 +17,9 @@ class TestDeviceManipulations(object):
         Unit test to Perform open and close Notification Center
         """
 
+        if DeviceInfo.is_locked:
+            DeviceManipulations.unlock_device(self.dev_id, UnlockType.SWIPE)
+
         dev_id = self.devices[0]
 
         main = DeviceInfo.get_current_activity(self.devices[0])
@@ -31,11 +34,22 @@ class TestDeviceManipulations(object):
         print(main)
 
         assert False
-    
+
+    def test_lock_device(self):
+        """
+        Unit test for device lock
+        """
+
+        DeviceManipulations.lock_device(self.dev_id)
+        assert False
+
     def test_save_screenshot(self):
         """
         Unit test for save_screenshot
         """
+
+        if DeviceInfo.is_locked:
+            DeviceManipulations.unlock_device(self.dev_id, UnlockType.SWIPE)
         
         test_device_path = "/sdcard/sc2.png"
         test_file_name = "sc2.png"
@@ -45,18 +59,13 @@ class TestDeviceManipulations(object):
         DeviceManipulations.save_screenshot(self.dev_id, "/sdcard/sc2.png", self.test_files_dir)
         assert os.path.isfile(os.path.join(self.test_files_dir, test_file_name))
     
-    # def test_lock_device(self):
-    #     """
-    #     Unit test for device lock
-    #     """
-
-    #     DeviceManipulations.lock_device(self.dev_id)
-    #     assert False
-    
     def test_unlock_device(self):
         """
         Unit test for unlock the device
         """
 
-        DeviceManipulations.unlock_device(self.dev_id)
-        assert False
+        if DeviceInfo.is_locked == False:
+            DeviceManipulations.lock_device(self.dev_id)
+
+        DeviceManipulations.unlock_device(self.dev_id, UnlockType.SWIPE)
+        assert DeviceInfo.is_locked(self.dev_id) == False
