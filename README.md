@@ -67,10 +67,14 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `tap(x, y)`
   - `stipe(x1, y1, x2, y2)`
   - `send_text(text)`
+  - `lock_device(Device ID)`
+  - `unlock_device`
+    - _UnlockType:_
+      - _`SWIPE`_
   - [_All Keyevent_](/py_adb/android_keyevent.py)
     - _`BACK`_
+    - _`POWER_BUTTON`_
     - TODO: Recent Apps
-    - TODO: LockDevice
 - __[Files:](/py_adb/files.py)__
   - `pull(path_from, path_to)`
   - `push(path_file, path_to)`
@@ -94,7 +98,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
     - TODO: Test
   - `grant_permission(package_name, permissions)`
   - `revoke_permission(package_name, permissions)`
-- __[Packages]()__
+- __[Packages](/py_adb/android_packages.py)__
 - __[Layout:](/py_adb/layout.py)__
   - `dump_layout()`
   - `get_layout(path_save)`
