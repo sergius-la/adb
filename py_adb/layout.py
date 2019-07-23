@@ -1,3 +1,4 @@
+import xml.etree.ElementTree as ET
 import os
 
 from adb import ADB
@@ -34,3 +35,14 @@ class Layout:
         if path_layout is not None:
             Files.pull(dev_id, path_layout, path_save)
             return os.path.join(path_save, path_layout.split("/")[2])
+    
+    @staticmethod
+    def search_element(path_file: str) -> str:
+        """
+        Method to search Element in the XML layout
+        """
+
+        root = ET.parse(path_file).getroot()
+        for type_tag in root.findall('bar/type'):
+            value = type_tag.get('foobar')
+            print(value)
