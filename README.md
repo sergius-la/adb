@@ -104,7 +104,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `get_layout(path_save)`
     - TODO: Search Element
 - __[Utility:](/py_adb/util.py)__
-  - `Paths` - TODO - Fix using class getter
+  - `Paths`
 
 ## Unit Tests
 
