@@ -3,15 +3,24 @@ import os
 
 class Identify(object):
 
+    # Paths
+    _root = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), os.pardir))
+    _package = os.path.abspath(os.path.dirname(__file__))
+    _test_files = os.path.join(_package, "tests", "test_files")
+    
     @staticmethod
-    def paths():    
-        root = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), os.pardir))
-        package = os.path.abspath(os.path.dirname(__file__))
-        test_files = os.path.join(package, "tests", "test_files")
-        return {"root":root, "package":package, "test_files":test_files}        
+    def path_root():
+        return Identify._root
+
+    @staticmethod
+    def path_package():
+        return Identify._package
+
+    @staticmethod
+    def path_test_files():
+        return Identify._test_files        
 
 class Path(Enum):
-    _paths = Identify.paths()
-    TEST_FILES = _paths.get("test_files")
-    PY_ADB = _paths.get("package")
-    ROOT = _paths.get("root")
+    TEST_FILES = Identify.path_test_files()
+    PY_ADB = Identify.path_package()
+    ROOT = Identify.path_root()
