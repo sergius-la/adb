@@ -1,4 +1,5 @@
 from py_adb.adb import ADB
+from py_adb.device_info import DeviceInfo
 
 import os
 
@@ -55,3 +56,12 @@ class Files:
         for f in files:
             if os.path.isfile(os.path.join(path, f)): 
                 os.remove(os.path.join(path, f))
+    
+    @staticmethod
+    def gen_file_name(cur_activity=True) -> str:
+        """
+        Method to generate file name
+        TODO: Find Better approach
+        """
+
+        return "display_layout.xml"
