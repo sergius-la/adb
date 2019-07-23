@@ -105,6 +105,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `search_element(path_file)`
     - TODO: Tests the method
     - TODO: Add search strategy (ID, XPATH)
+  - TODO: Add get element center
 - __[Utility:](/py_adb/util.py)__
   - `Paths`
 
