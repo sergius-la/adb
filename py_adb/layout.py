@@ -1,8 +1,13 @@
 import xml.etree.ElementTree as ET
 import os
 
+# from py_adb.adb import ADB
+# from py_adb.files import Files
+# from py_adb.util import Path
+
 from adb import ADB
-from py_adb.files import Files
+from files import Files
+from util import Path
 
 class Layout:
     """
@@ -43,6 +48,20 @@ class Layout:
         """
 
         root = ET.parse(path_file).getroot()
-        for type_tag in root.findall('bar/type'):
-            value = type_tag.get('foobar')
-            print(value)
+        for child in root.iter():
+            # child.text
+            el_resource_id = child.attrib.get("resource-id")
+            if el_resource_id is not None and len(el_resource_id) > 0 and "com.android.vending:id/drawer_layout" in el_resource_id:
+                print(el_resource_id)
+            # print(el_resource_id)
+            # print()
+            # value = type_tag.get('com.android.vending:id/drawer_layout')
+            # print(value)
+
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices()[0]
+    # Files.clear_dir(Path.PROC_FILES.value)
+    # Layout.get_layout(dev_id, Path.PROC_FILES.value)
+
+    path_to_file = os.path.join( Path.PROC_FILES.value, "window_dump.xml")
+    Layout.search_element(path_to_file)
