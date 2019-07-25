@@ -6,7 +6,7 @@ class Identify(object):
     # Paths
     _root = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), os.pardir))
     _package = os.path.abspath(os.path.dirname(__file__))
-    _test_files = os.path.join(_package, "tests", "test_files")
+    _test_files = os.path.join(_root, "tests", "test_files")
     _proc_files = os.path.join(_root, "proc_files")
 
     @staticmethod

@@ -38,11 +38,12 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 ***
 
 ###  Commands
+- TODO: Main Runner
 - __[ADB:](/py_adb/adb.py)__
   - `get_connected_devices()`
   - TODO: Add Dependensys into setup.py
 - __[Device info:](/py_adb/device_info.py)__
-  - `get_PID(process_name)`
+  - `get_PID(process_name)`dd
   - `get_meminfo(package)`
   - `save_meminfo(path, package)`
   - `get_package_activity()`

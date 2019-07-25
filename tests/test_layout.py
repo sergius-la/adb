@@ -14,10 +14,10 @@ class TestLayout(object):
     
     def test_get_layout(self):
         # TODO: Make a generator
-        Files.clear_dir(self.test_files)
+        Files.clear_dir(Path.TEST_FILES.value)
 
         dev_id = ADB.get_connected_devices()[0]
         print("I: Device - {}".format(dev_id))
-        path_to_file = Layout.get_layout(dev_id, Path.TEST_FILES)
+        path_to_file = Layout.get_layout(dev_id, Path.TEST_FILES.value)
         print("I: Path to file - {}".format(path_to_file))
         assert os.path.isfile(path_to_file)
