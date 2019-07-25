@@ -102,10 +102,11 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Layout:](/py_adb/layout.py)__
   - `dump_layout()`
   - `get_layout(path_save)`
-  - `search_element(path_file)`
+  - `search_element(path_file, id)`
+    - TODO: Add Element Class
     - TODO: Tests the method
-    - TODO: Add search strategy (ID, XPATH)
-  - TODO: Add get element center
+    - TODO: Add search strategy (XPATH)
+- __[TODO: Element Class]()__
 - __[Utility:](/py_adb/util.py)__
   - `Paths`
 
