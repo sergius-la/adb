@@ -17,7 +17,7 @@ class UserActions:
         Method for perform tap by coordinates
         """
 
-        command = "adb -s {dev_id} shell inout tap {x} {y}".format(dev_id=dev_id, x=x, y=y)
+        command = "adb -s {dev_id} shell input tap {x} {y}".format(dev_id=dev_id, x=x, y=y)
         ADB.exec_adb(command)
     
     @staticmethod
