@@ -1,5 +1,8 @@
-from adb import ADB
-from android_packages import AndroidKPackage
+from py_adb.adb import ADB
+from py_adb.android_packages import AndroidKPackage
+
+# from adb import ADB
+# from android_packages import AndroidKPackage
 
 class PackageInfo:
 
