@@ -5,11 +5,13 @@ from py_adb.adb import ADB
 from py_adb.files import Files
 from py_adb.util import Path
 from py_adb.user_actions import UserActions
+from py_adb.element import Element
 
 # from adb import ADB
 # from files import Files
 # from util import Path
 # from user_actions import UserActions
+# from element import Element
 
 class Layout:
     """
@@ -47,6 +49,8 @@ class Layout:
     def search_element(path_file: str, id: str) -> dict:
         """
         Method to search Element in the XML layout, return dict with element
+
+        TODO: Add element cast
         """
 
         root = ET.parse(path_file).getroot()
@@ -56,33 +60,27 @@ class Layout:
                 return child
     
     @staticmethod
-    def get_element_center_point(path_file: str, id: str):
+    def cast_to_element(path_file: str, id: str):
         """
-        Helper method to get a center points from the element
+        TEST MODE method
         """
+        
+        raw_element = Layout.search_element(path_file, id)
+        el = Element(raw_element)
+        print(el)
+        return el
+        
 
-        element = Layout.search_element(path_file, id)
-        assert element is not None
-        bounds = Layout._bounds_parser(element.get("bounds"))
-        x = int(bounds[1] + ((bounds[2] - bounds[1]) / 2))
-        y = int(bounds[0] + ((bounds[3] - bounds[0]) / 2))
-        return {"x":x, "y":y}
 
-    @staticmethod
-    def _bounds_parser(str_bounds: str) -> list:
-        """
-        Helper method to parce string like [8,56][712,165]
-        and return a list of int [8, 56, 712, 165]
-        """
 
-        raw = str_bounds.replace("[", "").replace("]", ",").split(",")
-        return list(map(int, list(filter(None, raw))))
 
 if __name__ == "__main__":
     # dev_id = ADB.get_connected_devices()[0]
 
     # Layout.get_layout(dev_id, Path.PROC_FILES.value)
-    path_to_file = os.path.join( Path.PROC_FILES.value, "window_dump.xml")
-    x = Layout.get_element_center_point(path_to_file, "com.android.vending:id/play_search_container")
+    # path_to_file = os.path.join( Path.PROC_FILES.value, "window_dump.xml")
+    # x = Layout.get_element_center_point(path_to_file, "com.android.vending:id/play_search_container")
     
+    Layout.cast_to_element(Path.PROC_FILES.value, "com.android.vending:id/play_search_container")
+
     # print(x.get("bounds"))

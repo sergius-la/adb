@@ -39,6 +39,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 
 ###  Commands
 - TODO: Main Runner
+- TODO: Add Deprishiated decorator
 - __[ADB:](/py_adb/adb.py)__
   - `get_connected_devices()`
   - TODO: Add Dependensys into setup.py
@@ -106,7 +107,8 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `search_element(path_file, id)`
     - TODO: Add search strategy (XPATH)
     - TODO: Search multiple lements
-- __[TODO: Element Class]()__
+- __[Element](/py_adb/element.py)__
+  - TODO: Test!!!
   - TODO: Tap
   - TODO: Send Key
 - __[Utility:](/py_adb/util.py)__

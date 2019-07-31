@@ -1,5 +1,5 @@
 from py_adb.adb import ADB
-from files import Files
+from py_adb.files import Files
 from py_adb.user_actions import UserActions
 from py_adb.device_info import DeviceInfo
 from py_adb.android_keyevent import AndroidKeyevent
