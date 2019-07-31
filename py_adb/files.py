@@ -1,8 +1,8 @@
-from py_adb.adb import ADB
-from py_adb.device_info import DeviceInfo
+# from py_adb.adb import ADB
+# from py_adb.device_info import DeviceInfo
 
-# from adb import ADB
-# from device_info import DeviceInfo
+from adb import ADB
+from device_info import DeviceInfo
 
 import os
 
