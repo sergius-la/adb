@@ -3,6 +3,7 @@ from py_adb.files import Files
 from py_adb.user_actions import UserActions
 from py_adb.device_info import DeviceInfo
 from py_adb.android_keyevent import AndroidKeyevent
+from py_adb.element import Element
 
 from enum import Enum, auto
 
@@ -106,3 +107,30 @@ class DeviceManipulations:
                 y = display_sie.get("hight")
                 UserActions.swipe(dev_id, x, y * 0.10, x, y * 0.80)
 
+    @staticmethod
+    def swipe(dev_id: str, x1: int, y1: int, x2: int ,y2: int):
+        """
+        Method for perform swipe by coordinates
+        """
+
+        command = "adb -s {dev_id} shell input swipe {x1} {y1} {x2} {y2}".format(dev_id=dev_id, x1=x1, y1=y1, x2=x2, y2=y2)
+        ADB.exec_adb(command)
+
+    @staticmethod
+    def tap(dev_id: str, x: int, y: int):
+        """
+        Method for perform tap by coordinates
+        """
+
+        command = "adb -s {dev_id} shell input tap {x} {y}".format(dev_id=dev_id, x=x, y=y)
+        ADB.exec_adb(command)
+    
+    @staticmethod
+    def send_text(dev_id: str, text: str):
+        """
+        Method perform typing text
+        NOTE: Before use, make sure input text field in selected
+        """
+
+        command = "adb -s {dev_id} shell input text {text}".format(dev_id=dev_id, text=text.strip().replace(" ", "%s")) # %s - Space
+        ADB.exec_adb(command)
