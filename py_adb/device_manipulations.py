@@ -65,7 +65,7 @@ class DeviceManipulations:
         """
         size = DeviceInfo.get_display_size(dev_id)
         x = int(size.get("width")) / 2
-        y2 = int(size.get("hight")) / 2
+        y2 = int(size.get("height")) / 2
         DeviceManipulations.swipe(dev_id, x, 1, x, y2)
 
     @staticmethod
@@ -88,24 +88,22 @@ class DeviceManipulations:
 
         :dev_id: Device ID
         """
-
         DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.POWER_BUTTON)
     
     @staticmethod
-    def unlock_device(dev_id: str, UnlockType):
+    def unlock_device(dev_id: str, unlock_type):
         """
         Method to unlock the device
 
         :dev_id: Device ID
         """
-
         is_locked = DeviceInfo.is_locked(dev_id)
         if is_locked:
             DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.WAKEUP)
-            if UnlockType.SWIPE:
+            if unlock_type.SWIPE:
                 display_sie = DeviceInfo.get_display_size(dev_id)
                 x = display_sie.get("width") / 2
-                y = display_sie.get("hight")
+                y = display_sie.get("height")
                 DeviceManipulations.swipe(dev_id, x, y * 0.10, x, y * 0.80)
 
     @staticmethod
