@@ -1,10 +1,11 @@
 import os
 
+
 class ADB:
     
     @staticmethod
     def exec_adb(command):
-        output = ADB._get_terminal_output(command)
+        output = ADB.get_terminal_output(command)
         if len(output) > 0:
             print(output)
     
@@ -16,7 +17,7 @@ class ADB:
 
         command = "adb devices"
         devices = []
-        raw_out = ADB._get_terminal_output(command)
+        raw_out = ADB.get_terminal_output(command)
         for line in raw_out:
             if "device" in line and "devices" not in line:
                 devices.append(line.split()[0])
@@ -27,7 +28,7 @@ class ADB:
         return devices
 
     @staticmethod
-    def _get_terminal_output(command: str) -> list:
+    def get_terminal_output(command: str) -> list:
         """
         :command: executable terminal command
         """

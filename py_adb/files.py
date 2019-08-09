@@ -1,10 +1,7 @@
-# from py_adb.adb import ADB
-# from py_adb.device_info import DeviceInfo
-
-from adb import ADB
-from device_info import DeviceInfo
+from py_adb.adb import ADB
 
 import os
+
 
 class Files:
     
@@ -17,8 +14,9 @@ class Files:
         :path_to: Path to save a file
         """
 
-        command = "adb -s {dev_id} pull {path_from} {path_to}".format(dev_id=dev_id, path_from=path_from, path_to=path_to)
-        output = ADB._get_terminal_output(command)
+        command = "adb -s {dev_id} pull {path_from} {path_to}".format(
+            dev_id=dev_id, path_from=path_from, path_to=path_to)
+        output = ADB.get_terminal_output(command)
         print("I: {}".format(output))
     
     @staticmethod
@@ -34,7 +32,7 @@ class Files:
         """
 
         command = "adb -s {dev} push {path_file} {path_to}".format(dev=dec_id, path_file=path_file, path_to=path_to)
-        output = ADB._get_terminal_output(command)
+        output = ADB.get_terminal_output(command)
         print("I: {}".format(output))
     
     @staticmethod

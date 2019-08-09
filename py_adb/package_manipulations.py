@@ -1,6 +1,7 @@
 from py_adb.adb import ADB
 from py_adb.android_prmissions import AndroidPermissions
 
+
 class PackageManipulations:
     
     @staticmethod
@@ -24,12 +25,12 @@ class PackageManipulations:
         ADB.exec_adb(command)
 
     @staticmethod
-    def close_package(dev_id, package):
+    def close_package(dev_id: str, package: str):
         """
         Method to close package
         """
 
-        command = "adb -s {dev_id} shell am force-stop {package}".format(dev_id, dev_id, package=package)
+        command = "adb -s {dev_id} shell am force-stop {package}".format(dev_id=dev_id, package=package)
         ADB.exec_adb(command)
 
     @staticmethod
@@ -45,7 +46,7 @@ class PackageManipulations:
 
         
     @staticmethod
-    def grant_permission(dev_id: str, package: str, *AndroidPermissions):
+    def grant_permission(dev_id: str, package: str, *android_permissions):
         """
         Method to grant permissions for package
         TODO: Unit Test
@@ -55,15 +56,17 @@ class PackageManipulations:
         :permission: permission
         """
 
-        for permission in AndroidPermissions:
-            command = "adb -s {dev} shell pm grant {package} {permission}".format(dev=dev_id, package=package, permission=permission.value.get("perm"))
-            out = ADB._get_terminal_output(command)
+        for permission in android_permissions:
+            command = "adb -s {dev} shell pm grant {package} {permission}".format(
+                dev=dev_id, package=package, permission=permission.value.get("perm"))
+            out = ADB.get_terminal_output(command)
             if len(out) > 0:
                 print(out)
-            print("I: Prmissions {perm} has been granted to Device ID {dev} for package {package}".format(perm=permission.value.get("name"), dev=dev_id, package=package))
+            print("I: Prmissions {perm} has been granted to Device ID {dev} for package {package}".format(
+                perm=permission.value.get("name"), dev=dev_id, package=package))
 
     @staticmethod
-    def revoke_permission(dev_id: str, package: str, *AndroidPermissions):
+    def revoke_permission(dev_id: str, package: str, *android_permissions):
         """
         Method to grant permissions for package
         TODO: Unit Test
@@ -73,17 +76,19 @@ class PackageManipulations:
         :permission: permission
         """
 
-        for permission in AndroidPermissions:
-            command = "adb -s {dev} shell pm revoke {package} {permission}".format(dev=dev_id, package=package, permission=permission.value.get("perm"))
-            out = ADB._get_terminal_output(command)
+        for permission in android_permissions:
+            command = "adb -s {dev} shell pm revoke {package} {permission}".format(
+                dev=dev_id, package=package, permission=permission.value.get("perm"))
+            out = ADB.get_terminal_output(command)
             if len(out) > 0:
                 print(out)
             else:
-                print("I: Prmissions {perm} has been revoke to Device ID {dev} for package {package}".format(perm=permission.value.get("name"), dev=dev_id, package=package))
+                print("I: Permissions {perm} has been revoke to Device ID {dev} for package {package}".format(
+                    perm=permission.value.get("name"), dev=dev_id, package=package))
 
-if __name__ == "__main__":
-    dev_id = ADB.get_connected_devices()[0]
-    package = "com.google.android.youtube"
-    # print(AndroidPermissions.CAMERA.value.get("perm"))
-    PackageManipulations.grant_permission(dev_id, package, AndroidPermissions.CAMERA, AndroidPermissions.LOCATION)
-    # PackageManipulations.revoke_permission(dev_id, package, AndroidPermissions.CAMERA, AndroidPermissions.LOCATION)
+# if __name__ == "__main__":
+#     dev_id = ADB.get_connected_devices()[0]
+#     package = "com.google.android.youtube"
+#     # print(AndroidPermissions.CAMERA.value.get("perm"))
+#     PackageManipulations.grant_permission(dev_id, package, AndroidPermissions.CAMERA, AndroidPermissions.LOCATION)
+#     # PackageManipulations.revoke_permission(dev_id, package, AndroidPermissions.CAMERA, AndroidPermissions.LOCATION)

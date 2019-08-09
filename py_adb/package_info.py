@@ -1,8 +1,5 @@
 from py_adb.adb import ADB
-from py_adb.android_packages import AndroidKPackage
 
-# from adb import ADB
-# from android_packages import AndroidKPackage
 
 class PackageInfo:
 
@@ -13,7 +10,7 @@ class PackageInfo:
         """
 
         command = "adb -s {dev_id} shell pm list packages".format(dev_id=dev_id)
-        raw_packages = ADB._get_terminal_output(command)
+        raw_packages = ADB.get_terminal_output(command)
         return [x.strip() for x in raw_packages]
     
     @staticmethod
@@ -30,7 +27,7 @@ class PackageInfo:
         return False
     
     @staticmethod
-    def get_package_version(dev_id: str, package: str) -> str:
+    def get_package_version(dev_id: str, package: str) -> list:
         """
         Return a package version
 
@@ -38,14 +35,15 @@ class PackageInfo:
         :package: package name
         """
 
-        command = "adb -s {dev_id} shell dumpsys package {package} | grep versionName".format(dev_id=dev_id, package=package)
-        raw_out = ADB._get_terminal_output(command)
+        command = "adb -s {dev_id} shell dumpsys package {package} | grep versionName".format(
+            dev_id=dev_id, package=package)
+        raw_out = ADB.get_terminal_output(command)
         versions = []
         for ver in raw_out:
             versions.append(ver.strip().split("=")[1])
         return versions
 
-if __name__ == "__main__":
-    dev_id = ADB.get_connected_devices()[0]
+# if __name__ == "__main__":
+    # dev_id = ADB.get_connected_devices()[0]
 
     # x = PackageInfo.get_packages_version(dev_id, AndroidKPackage.YOUTUBE)

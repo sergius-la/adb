@@ -1,5 +1,5 @@
+from py_adb.device_manipulations import DeviceManipulations
 
-from py_adb.user_actions import UserActions
 
 class Element(object):
     """
@@ -10,7 +10,7 @@ class Element(object):
         assert isinstance(raw_value, dict), "Raw Element value shoud come in dict format"
         self._id = Element._bounds_parser(raw_value.get("recource-id"))
         self._bounds = raw_value.get("bounds")
-        self._center_point = Element.get_element_center_point()
+        self._center_point = Element.get_element_center_point(self._bounds)
         # TODO: Check for text value in the element and convert it
         self._content_desc = raw_value.get("content-desc")
         self._is_enable = raw_value.get("enabled")
@@ -19,7 +19,7 @@ class Element(object):
         self._tag = "TODO"
     
     def __repr__(self):
-        return "Recource-ID {id} - Content desc - {content_desc} ".format(id=_id, content_desc=_content_desc)
+        return "Resource-ID {id} - Content desc - {content_desc} ".format(id=self._id, content_desc=self._content_desc)
     
     @property
     def x(self):
@@ -38,18 +38,18 @@ class Element(object):
         return self._center_point.get("y")
 
     @classmethod
-    def get_element_center_point():
+    def get_element_center_point(cls, raw_bounds):
         """
         Helper method to get a center points from the element
         TODO: Test!
         """
 
-        bounds = Element._bounds_parser(Element._bounds)
+        bounds = Element._bounds_parser(raw_bounds)
         x = int(bounds[1] + ((bounds[2] - bounds[1]) / 2))
         y = int(bounds[0] + ((bounds[3] - bounds[0]) / 2))
-        return {"x":x, "y":y}
+        return {"x": x, "y": y}
 
-    @classmethod
+    @staticmethod
     def _bounds_parser(str_bounds: str) -> list:
         """
         Helper method to parce string like [8,56][712,165]
@@ -59,3 +59,10 @@ class Element(object):
 
         raw = str_bounds.replace("[", "").replace("]", ",").split(",")
         return list(map(int, list(filter(None, raw))))
+    
+    def tap(self, dev_id):
+        """
+        Method to tap on the element
+        """
+
+        DeviceManipulations.tap(dev_id, self.x, self.y)
