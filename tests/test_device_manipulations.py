@@ -24,7 +24,7 @@ class TestDeviceManipulations(object):
 
         main = DeviceInfo.get_current_activity(self.devices[0])
         print(main)
-        android_version = DeviceManipulations.open_notificastion_center(self.devices[0])
+        android_version = DeviceManipulations.open_notification_center(self.devices[0])
         notif = DeviceInfo.get_current_activity(self.devices[0])
         print(notif)
 

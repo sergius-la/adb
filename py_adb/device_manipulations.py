@@ -1,14 +1,14 @@
 from py_adb.adb import ADB
 from py_adb.files import Files
-from py_adb.user_actions import UserActions
 from py_adb.device_info import DeviceInfo
 from py_adb.android_keyevent import AndroidKeyevent
-from py_adb.element import Element
 
 from enum import Enum, auto
 
+
 class UnlockType(Enum):
     SWIPE = auto()
+
 
 class DeviceManipulations:
 
@@ -56,7 +56,7 @@ class DeviceManipulations:
             pass
         
     @staticmethod
-    def open_notificastion_center(dev_id):
+    def open_notification_center(dev_id):
         """
         Method perform horizontal swipe to open notification center
         TODO: Add Check if notification center is open
@@ -66,18 +66,19 @@ class DeviceManipulations:
         size = DeviceInfo.get_display_size(dev_id)
         x = int(size.get("width")) / 2
         y2 = int(size.get("hight")) / 2
-        UserActions.swipe(dev_id, x, 1, x, y2)
+        DeviceManipulations.swipe(dev_id, x, 1, x, y2)
 
     @staticmethod
-    def execute_keyevent(dev_id, AndroidKeyevent):
+    def execute_keyevent(dev_id, android_keyevent):
         """
         Method to execute Keyevent
 
         :dev_id: Device ID
-        :AndroidKeyevent: Android Keyevent
+        :android_keyevent: Android KeyEvent
         """
 
-        command = "adb -s {dev_id} shell input keyevent {keycode}".format(dev_id=dev_id,  keycode=AndroidKeyevent.value.get("key_code"))
+        command = "adb -s {dev_id} shell input keyevent {keycode}".format(
+            dev_id=dev_id, keycode=android_keyevent.value.get("key_code"))
         ADB.exec_adb(command)
     
     @staticmethod
@@ -105,10 +106,10 @@ class DeviceManipulations:
                 display_sie = DeviceInfo.get_display_size(dev_id)
                 x = display_sie.get("width") / 2
                 y = display_sie.get("hight")
-                UserActions.swipe(dev_id, x, y * 0.10, x, y * 0.80)
+                DeviceManipulations.swipe(dev_id, x, y * 0.10, x, y * 0.80)
 
     @staticmethod
-    def swipe(dev_id: str, x1: int, y1: int, x2: int ,y2: int):
+    def swipe(dev_id: str, x1: int, y1: int, x2: int, y2: int):
         """
         Method for perform swipe by coordinates
         """
@@ -132,5 +133,6 @@ class DeviceManipulations:
         NOTE: Before use, make sure input text field in selected
         """
 
-        command = "adb -s {dev_id} shell input text {text}".format(dev_id=dev_id, text=text.strip().replace(" ", "%s")) # %s - Space
+        command = "adb -s {dev_id} shell input text {text}".format(
+            dev_id=dev_id, text=text.strip().replace(" ", "%s"))  # %s - Space
         ADB.exec_adb(command)

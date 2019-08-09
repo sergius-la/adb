@@ -1,17 +1,10 @@
+from py_adb.adb import ADB
+from py_adb.files import Files
+from py_adb.element import Element
+
 import xml.etree.ElementTree as ET
 import os
 
-from py_adb.adb import ADB
-from py_adb.files import Files
-from py_adb.util import Path
-from py_adb.user_actions import UserActions
-from py_adb.element import Element
-
-# from adb import ADB
-# from files import Files
-# from util import Path
-# from user_actions import UserActions
-# from element import Element
 
 class Layout:
     """
@@ -28,7 +21,7 @@ class Layout:
         """
 
         command = "adb -s {dev_id} shell uiautomator dump".format(dev_id=dev_id)
-        raw_path = ADB._get_terminal_output(command)[0].strip()
+        raw_path = ADB.get_terminal_output(command)[0].strip()
         if "UI hierchary dumped to" in raw_path:
             return raw_path.split(":")[1].strip()
         else:
@@ -69,18 +62,14 @@ class Layout:
         el = Element(raw_element)
         print(el)
         return el
-        
 
-
-
-
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # dev_id = ADB.get_connected_devices()[0]
 
     # Layout.get_layout(dev_id, Path.PROC_FILES.value)
     # path_to_file = os.path.join( Path.PROC_FILES.value, "window_dump.xml")
     # x = Layout.get_element_center_point(path_to_file, "com.android.vending:id/play_search_container")
     
-    Layout.cast_to_element(Path.PROC_FILES.value, "com.android.vending:id/play_search_container")
+    # Layout.cast_to_element(Path.PROC_FILES.value, "com.android.vending:id/play_search_container")
 
     # print(x.get("bounds"))

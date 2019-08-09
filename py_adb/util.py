@@ -1,6 +1,7 @@
 from enum import Enum, auto
 import os
 
+
 class Identify(object):
 
     # Paths
@@ -24,6 +25,7 @@ class Identify(object):
     @staticmethod
     def path_proc_files():
         return Identify._proc_files   
+
 
 class Path(Enum):
     TEST_FILES = Identify.path_test_files()

@@ -1,4 +1,3 @@
-from py_adb.adb import ADB
 from py_adb.package_info import PackageInfo
 from py_adb.device_info import DeviceInfo
 from py_adb.android_properties import Properties
@@ -15,7 +14,7 @@ class Info:
         """
         Method print into console
         - Device - id
-        - Braand
+        - Brand
         - Model
         
         - Package version
@@ -27,7 +26,9 @@ class Info:
         """
 
         print("Device - {dev}".format(dev=dev_id))
-        DeviceInfo.get_prop(dev_id, Properties.BRAND, Properties.MODEL)
+        properties = DeviceInfo.get_prop(dev_id, Properties.BRAND, Properties.MODEL)
+        for prop, value in properties.items():
+            print("{} - {}".format(prop, value))
         print()
         print("Package - {pac}".format(pac=package))
         package_versions = PackageInfo.get_package_version(dev_id, package)
@@ -35,7 +36,7 @@ class Info:
             print("Version - {ver}".format(pac=package, ver=version))
     
     @staticmethod
-    def get_packages_info(dev_id: str, *AndroidKPackages) -> list:
+    def get_packages_info(dev_id: str, *android_packages) -> list:
         """
         Return a list<Package>
 
@@ -43,15 +44,19 @@ class Info:
         :*AndroidKPackage: AndroidPackage(enum)
         """
 
+        # TODO: Add check for each package
+        # assert android_packages isinstance(Package)
+
         packages = []
-        for package in AndroidKPackages:
-            package = Package(package.value.get("package"), package.value.get("App Name"), PackageInfo.get_package_version(dev_id, package.value.get("package")))
+        for package in android_packages:
+            package = Package(package.value.get("package"), package.value.get("App Name"),
+                              PackageInfo.get_package_version(dev_id, package.value.get("package")))
             packages.append(package)
         return packages
 
 # if __name__ == "__main__":
-    # package = "com.android.vending"
-    # Info.get_environment(ADB.get_connected_devices()[0], package)
+#     package = "com.android.vending"
+#     Info.get_environment(ADB.get_connected_devices()[0], package)
 
     # adb shell dumpsys package com.android.vending | grep version
     # adb shell dumpsys package com.google.android.youtube | grep version
