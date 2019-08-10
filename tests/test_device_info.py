@@ -2,9 +2,12 @@ from py_adb.device_info import DeviceInfo
 from py_adb.adb import ADB
 from py_adb.android_properties import Properties
 
+
 class TestDeviceInfo(object):
     
-    devices = ADB.get_connected_devices()
+    _devices = ADB.get_connected_devices()
+    assert len(_devices) > 0, "Check connected Device"
+    device = _devices[0]
 
     def test_android_version(self):
         """
@@ -12,7 +15,7 @@ class TestDeviceInfo(object):
         Return Example - Android Version 6.0.1
         """
 
-        android_version = DeviceInfo.get_prop(self.devices[0], Properties.ANDROID_VERSION)
+        android_version = DeviceInfo.get_prop(self.device, Properties.ANDROID_VERSION)
         print(android_version)
         assert isinstance(android_version, dict)
         version = android_version.get("Android Version") 
@@ -20,15 +23,9 @@ class TestDeviceInfo(object):
 
     def test_getprop(self):
         """
-        Unit test for all getprop shoud return in dict
+        Unit test for all getprop should return in dict
         """
 
-        getprop = DeviceInfo.all_getprop(self.devices[0])
+        getprop = DeviceInfo.all_getprop(self.device)
         assert isinstance(getprop, dict)
         assert len(getprop) > 0
-    
-    def test_is_locked(self):
-
-        res = DeviceInfo.is_locked(self.devices[0])
-        print(res)
-        assert False

@@ -56,6 +56,8 @@ class DeviceInfo:
             activity = raw[1][:len(raw[1]) - 1:]
             package = raw[0].split(" ").pop()
             return {"activity": activity, "package": package}
+        elif "StatusBar" in output:
+            return {"activity": "StatusBar", "package": "AndroidStatusBar"}
         else:
             print("W: {}".format(output))
 
@@ -132,12 +134,12 @@ class DeviceInfo:
                     return True
         return False
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 #     # system_process = "com.android.systemui"
-#     dev_id = ADB.get_connected_devices()[0]
-#
-#     x = DeviceInfo.get_current_activity(dev_id)
-#     print(x)
+    dev_id = ADB.get_connected_devices()[0]
+
+    x = DeviceInfo.get_current_activity(dev_id)
+    print(x)
     # size = DeviceInfo.get_display_size(dev_id)
     # print(size)
     # print(DeviceInfo.get_package_activity(dev_id, "com.android.vending"))

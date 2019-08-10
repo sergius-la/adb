@@ -5,43 +5,42 @@ from py_adb.files import Files
 from py_adb.adb import ADB
 
 import os
+import time
+
 
 class TestDeviceManipulations(object):
-    
     test_files_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "test_files")
-    devices = ADB.get_connected_devices()
-    dev_id = devices[0]
+    _devices = ADB.get_connected_devices()
+    assert len(_devices) > 0, "Check connected Device"
+    device = _devices[0]
 
     def test_open_close_notification_center(self):
         """
         Unit test to Perform open and close Notification Center
+        TODO: Fix the test
         """
 
         if DeviceInfo.is_locked:
-            DeviceManipulations.unlock_device(self.dev_id, UnlockType.SWIPE)
+            DeviceManipulations.unlock_device(self.device, UnlockType.SWIPE)
 
-        dev_id = self.devices[0]
+        DeviceManipulations.open_notification_center(self.device)
+        current_activity = DeviceInfo.get_current_activity(self.device)
+        assert current_activity.get("activity") == "StatusBar"
 
-        main = DeviceInfo.get_current_activity(self.devices[0])
-        print(main)
-        android_version = DeviceManipulations.open_notification_center(self.devices[0])
-        notif = DeviceInfo.get_current_activity(self.devices[0])
-        print(notif)
-
-        out = DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.BACK)
-
-        main = DeviceInfo.get_current_activity(self.devices[0])
-        print(main)
-
-        assert False
+        DeviceManipulations.execute_keyevent(self.device, AndroidKeyevent.BACK)
+        current_activity = DeviceInfo.get_current_activity(self.device)
+        assert current_activity.get("activity") == "com.sec.android.app.launcher.activities.LauncherActivity"
 
     def test_lock_device(self):
         """
         Unit test for device lock
         """
 
-        DeviceManipulations.lock_device(self.dev_id)
-        assert False
+        DeviceManipulations.lock_device(self.device)
+        time.sleep(1)
+        lock_status = DeviceInfo.is_locked(self.device)
+        print("Device lock status - {}".format(lock_status))
+        assert lock_status
 
     def test_save_screenshot(self):
         """
@@ -49,23 +48,23 @@ class TestDeviceManipulations(object):
         """
 
         if DeviceInfo.is_locked:
-            DeviceManipulations.unlock_device(self.dev_id, UnlockType.SWIPE)
-        
+            DeviceManipulations.unlock_device(self.device, UnlockType.SWIPE)
+
         test_device_path = "/sdcard/sc2.png"
         test_file_name = "sc2.png"
 
         Files.clear_dir(self.test_files_dir)
 
-        DeviceManipulations.save_screenshot(self.dev_id, "/sdcard/sc2.png", self.test_files_dir)
+        DeviceManipulations.save_screenshot(self.device, "/sdcard/sc2.png", self.test_files_dir)
         assert os.path.isfile(os.path.join(self.test_files_dir, test_file_name))
-    
+
     def test_unlock_device(self):
         """
         Unit test for unlock the device
         """
 
-        if DeviceInfo.is_locked == False:
-            DeviceManipulations.lock_device(self.dev_id)
+        if not DeviceInfo.is_locked:
+            DeviceManipulations.lock_device(self.device)
 
-        DeviceManipulations.unlock_device(self.dev_id, UnlockType.SWIPE)
-        assert DeviceInfo.is_locked(self.dev_id) == False
+        DeviceManipulations.unlock_device(self.device, UnlockType.SWIPE)
+        assert not DeviceInfo.is_locked(self.device)
