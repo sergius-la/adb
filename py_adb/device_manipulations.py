@@ -89,6 +89,7 @@ class DeviceManipulations:
         :dev_id: Device ID
         """
         DeviceManipulations.execute_keyevent(dev_id, AndroidKeyevent.POWER_BUTTON)
+
     
     @staticmethod
     def unlock_device(dev_id: str, unlock_type):
