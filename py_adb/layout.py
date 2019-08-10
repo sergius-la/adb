@@ -1,6 +1,7 @@
 from py_adb.adb import ADB
 from py_adb.files import Files
 from py_adb.element import Element
+from py_adb.util import Path
 
 import xml.etree.ElementTree as ET
 import os
@@ -28,7 +29,7 @@ class Layout:
             print("E: {}".format(raw_path))
     
     @staticmethod
-    def get_layout(dev_id: str, path_save: str) -> str:
+    def save_layout(dev_id: str, path_save: str) -> str:
         """
         Method save XML layout of current device screen, return path to saved file
         """
@@ -43,6 +44,7 @@ class Layout:
         """
         Method to search Element in the XML layout, return dict with element
 
+        TODO: Add Search Generic Search
         TODO: Add element cast
         """
 
@@ -63,12 +65,13 @@ class Layout:
         print(el)
         return el
 
-# if __name__ == "__main__":
-    # dev_id = ADB.get_connected_devices()[0]
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices()[0]
 
-    # Layout.get_layout(dev_id, Path.PROC_FILES.value)
+    Layout.save_layout(dev_id, Path.PROC_FILES.value)
     # path_to_file = os.path.join( Path.PROC_FILES.value, "window_dump.xml")
-    # x = Layout.get_element_center_point(path_to_file, "com.android.vending:id/play_search_container")
+
+
     
     # Layout.cast_to_element(Path.PROC_FILES.value, "com.android.vending:id/play_search_container")
 
