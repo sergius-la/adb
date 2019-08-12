@@ -19,6 +19,8 @@ Install with PIP <br>
 
 Usage example:
 ```python
+from py_adb.adb import ADB
+
 dev_id = ADB.get_connected_devices()[0]
 ADB.swipe(dev_id, 370, 1200, 370, 160)
 ```
@@ -39,7 +41,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 
 ###  Commands
 - TODO: Main Runner
-- TODO: Add Deprishiated decorator
 - __[ADB:](/py_adb/adb.py)__
   - `get_connected_devices()`
   - TODO: Add Dependensys into setup.py
@@ -62,7 +63,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
     - TODO: Name generator
     - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
-    - TODO: Add Check is Notification center is vivible
     - TODO: Screen Caption
 - __[User actions:](/py_adb/user_actions.py)__
   - TODO: Refactor Move to device Manupulations  
@@ -81,9 +81,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `pull(path_from, path_to)`
   - `push(path_file, path_to)`
   - `delete(path_file)`
-      - TODO: Test
-      - TODO: Add check before executing
-      - TODO: Add check after executing
   - `clear_dir(path_dir)`
 - __[Package info:](/py_adb/package_info.py)__
   - `get_list_packages()`
@@ -105,7 +102,9 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `dump_layout()`
   - `get_layout(path_save)`
   - `search_element(path_file, id)`
-    - TODO: Add search strategy (XPATH)
+    - TODO: Add Search Generic Search
+        - TODO: Add search strategy (XPATH)
+    - TODO: Add element cast
     - TODO: Search multiple lements
 - __[Element](/py_adb/element.py)__
   - TODO: Test!!!

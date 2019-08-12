@@ -65,14 +65,17 @@ class Layout:
         print(el)
         return el
 
-if __name__ == "__main__":
-    dev_id = ADB.get_connected_devices()[0]
-
-    Layout.save_layout(dev_id, Path.PROC_FILES.value)
-    # path_to_file = os.path.join( Path.PROC_FILES.value, "window_dump.xml")
-
-
-    
-    # Layout.cast_to_element(Path.PROC_FILES.value, "com.android.vending:id/play_search_container")
-
-    # print(x.get("bounds"))
+# if __name__ == "__main__":
+#     dev_id = ADB.get_connected_devices()[0]
+#
+#     Layout.save_layout(dev_id, Path.PROC_FILES.value)
+#
+#
+#     p = os.path.join(Path.PROC_FILES.value, "window_dump.xml")
+#     raw_elem = Layout.search_element(p, "com.google.android.youtube:id/image")
+#     # print(type(elem))
+#     # print(elem.get("resource-id"))
+#     element = Element(raw_elem)
+#     print(element.tap(dev_id))
+#
+#     # print(x.get("bounds"))
