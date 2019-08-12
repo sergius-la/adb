@@ -18,6 +18,6 @@ class TestLayout(object):
 
         dev_id = ADB.get_connected_devices()[0]
         print("I: Device - {}".format(dev_id))
-        path_to_file = Layout.get_layout(dev_id, Path.TEST_FILES.value)
+        path_to_file = Layout.save_layout(dev_id, Path.TEST_FILES.value)
         print("I: Path to file - {}".format(path_to_file))
         assert os.path.isfile(path_to_file)
