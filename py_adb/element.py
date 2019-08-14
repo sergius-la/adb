@@ -6,20 +6,20 @@ class Element(object):
     Class to represent the Android element
     """
 
-    def __init__(self, raw_value: dict):
-        # assert isinstance(raw_value, dict), "Raw Element value shoud come in dict format", CHANGE to  <class 'xml.etree.ElementTree.Element'>
-        self._id = raw_value.get("resource-id")
-        self._bounds = Element._bounds_parser(raw_value.get("bounds"))
+    def __init__(self, raw_xml_element):
+        self._id = raw_xml_element.get("resource-id")
+        self._bounds = Element._bounds_parser(raw_xml_element.get("bounds"))
         self._center_point = Element.get_element_center_point(self._bounds)
         # TODO: Check for text value in the element and convert it
-        self._content_desc = raw_value.get("content-desc")
-        self._is_enable = raw_value.get("enabled")
-        self._is_clickable = raw_value.get("clickable")
+        self._content_desc = raw_xml_element.get("content-desc")
+        self._is_enable = raw_xml_element.get("enabled")
+        self._is_clickable = raw_xml_element.get("clickable")
         # TODO: Check tags in the mobile
         self._tag = "TODO"
     
     def __repr__(self):
-        return "Element: \nResource-ID {id} \nContent desc - {content_desc} ".format(id=self._id, content_desc=self._content_desc)
+        return "Element: \nResource-ID - <{id}> \nContent desc - <{content_desc}> "\
+            .format(id=self._id, content_desc=self._content_desc)
     
     @property
     def x(self):
@@ -40,11 +40,14 @@ class Element(object):
     @classmethod
     def get_element_center_point(cls, raw_bounds):
         """
-        Helper method to get a center points from the element
+        Helper method to get a center points for the element
+
+        # [X1-616, Y1-48][X2-720, Y2-144]
+        The center counting by - X1 + (X1 + X2)/2
         """
 
-        x = int(raw_bounds[1] + ((raw_bounds[2] - raw_bounds[1]) / 2))
-        y = int(raw_bounds[0] + ((raw_bounds[3] - raw_bounds[0]) / 2))
+        x = int(raw_bounds[0] + ((raw_bounds[2] - raw_bounds[0]) / 2))
+        y = int(raw_bounds[1] + ((raw_bounds[3] - raw_bounds[1]) / 2))
         return {"x": x, "y": y}
 
     @staticmethod
