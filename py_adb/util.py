@@ -8,7 +8,7 @@ class Identify(object):
     _root = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), os.pardir))
     _package = os.path.abspath(os.path.dirname(__file__))
     _test_files = os.path.join(_root, "tests", "test_files")
-    _proc_files = os.path.join(_root, "proc_files")
+    _processing_files = os.path.join(_root, "processing_files")
 
     @staticmethod
     def path_root():
@@ -23,12 +23,14 @@ class Identify(object):
         return Identify._test_files     
 
     @staticmethod
-    def path_proc_files():
-        return Identify._proc_files   
+    def path_processing_files():
+        if not os.path.exists(Identify._processing_files):
+            os.makedirs(Identify._processing_files)
+        return Identify._processing_files
 
 
 class Path(Enum):
     TEST_FILES = Identify.path_test_files()
     PY_ADB = Identify.path_package()
     ROOT = Identify.path_root()
-    PROC_FILES = Identify.path_proc_files()
+    PROCESSING_FILES = Identify.path_processing_files()

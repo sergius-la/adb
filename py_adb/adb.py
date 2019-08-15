@@ -10,7 +10,7 @@ class ADB:
             print(output)
     
     @staticmethod
-    def get_connected_devices() -> list:
+    def get_connected_devices(is_connected=False) -> list:
         """
         Method return list() of connected authorized devices ids.
         """
@@ -22,9 +22,8 @@ class ADB:
             if "device" in line and "devices" not in line:
                 devices.append(line.split()[0])
         
-        if len(devices) == 0:
-            print("W: Check connected devices")
-
+        if (is_connected):
+            assert len(devices) > 0, "Connected Devices not Found"
         return devices
 
     @staticmethod
