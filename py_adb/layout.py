@@ -53,10 +53,11 @@ class Layout:
             if el_resource_id is not None and len(el_resource_id) > 0 and id in el_resource_id:
                 return Element(child)
 
-# if __name__ == "__main__":
-#     dev_id = ADB.get_connected_devices()[0]
-# #
-#     Layout.save_layout(dev_id, Path.PROC_FILES.value)
+
+if __name__ == "__main__":
+    dev_id = ADB.get_connected_devices(is_connected=True)[0]
+
+    Layout.save_layout(dev_id, Path.PROCESSING_FILES.value)
 # #
 # #     # [616, 48][720, 144]
 # #
