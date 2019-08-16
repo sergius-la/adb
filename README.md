@@ -30,7 +30,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 ## Package methods
 
 ### Cookbook
-- __[Info:](/py_adb/info.py)__
+- __[Info:](/py_adb/cookbook.py)__
     - `get_environment(package)`
     - `get_packages_version(AndroidPackage)`
       - [_All AndroidPackages_](/py_adb/android_packages.py)
@@ -64,8 +64,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
     - TODO: Add Flag to delete file after save
   - `open_notification_center(Device_ID)`
     - TODO: Screen Caption
-- __[User actions:](/py_adb/user_actions.py)__
-  - TODO: Refactor Move to device Manupulations  
   - `tap(x, y)`
   - `stipe(x1, y1, x2, y2)`
   - `send_text(text)`
@@ -99,19 +97,31 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `revoke_permission(package_name, permissions)`
 - __[Packages](/py_adb/android_packages.py)__
 - __[Layout:](/py_adb/layout.py)__
-  - `dump_layout()`
-  - `get_layout(path_save)`
-  - `search_element(path_file, id)`
+```python
+from py_adb.layout import Layout
+
+Layout.save_layout("<Device ID>", "PATH_to_save") # Save the XML layout, from Device
+Layout.get_element("PATH_to_xml_layout", "element_id") # Get element from sXML layout
+```
     - TODO: Add Search Generic Search
         - TODO: Add search strategy (XPATH)
     - TODO: Add element cast
-    - TODO: Search multiple lements
+    - TODO: Search multiple elements
 - __[Element](/py_adb/element.py)__
-  - TODO: Test!!!
-  - TODO: Tap
-  - TODO: Send Key
+```python
+from py_adb.element import Element
+
+Element.tap("<Device ID>") # Method to tap on the Element
+Element.type_text("<Device ID>", "<text>") # Send text to Element TODO: Test, Add check for Element
+```
 - __[Utility:](/py_adb/util.py)__
-  - `Paths`
+```python
+from py_adb.util import Path
+
+# Paths to Dirs
+Path.PROCESSING_FILES # Processing Files 
+Path.TEST_FILES # Unit tests
+```
 
 ## Unit Tests
 

@@ -15,7 +15,7 @@ class Layout:
     """
 
     @staticmethod
-    def dump_layout(dev_id: str) -> str:
+    def _dump_layout(dev_id: str) -> str:
         """
         Method call the uiautomator to dump screen layout and Return path to it
         :dev_id: device id
@@ -34,13 +34,13 @@ class Layout:
         Method save XML layout of current device screen, return path to saved file
         """
         
-        path_layout = Layout.dump_layout(dev_id)
+        path_layout = Layout._dump_layout(dev_id)
         if path_layout is not None:
             Files.pull(dev_id, path_layout, path_save)
             return os.path.join(path_save, path_layout.split("/")[2])
     
     @staticmethod
-    def get_element(path_file: str, id: str) -> dict:
+    def get_element(path_file: str, id: str) -> Element:
         """
         Method to search Element in the XML layout, return dict with element
 
