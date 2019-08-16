@@ -97,23 +97,28 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `revoke_permission(package_name, permissions)`
 - __[Packages](/py_adb/android_packages.py)__
 - __[Layout:](/py_adb/layout.py)__
-```python
-from py_adb.layout import Layout
-
-Layout.save_layout("<Device ID>", "PATH_to_save") # Save the XML layout, from Device
-Layout.get_element("PATH_to_xml_layout", "element_id") # Get element from sXML layout
-```
-    - TODO: Add Search Generic Search
-        - TODO: Add search strategy (XPATH)
-    - TODO: Add element cast
-    - TODO: Search multiple elements
-- __[Element](/py_adb/element.py)__
-```python
-from py_adb.element import Element
-
-Element.tap("<Device ID>") # Method to tap on the Element
-Element.type_text("<Device ID>", "<text>") # Send text to Element TODO: Test, Add check for Element
-```
+    ```python
+  from py_adb.layout import Layout
+    
+  Layout.save_layout("<Device ID>", "PATH_to_save") # Save the XML layout, from Device
+  Layout.get_element("PATH_to_xml_layout", "element_id") # Get element from sXML layout
+  # TODO: Search multiple elements
+    ```
+   - __[By:](/py_adb/by.py)__
+    ```python
+  from py_adb.by import By
+  
+  # Search Element strategy  
+  By.ID # Element id
+  By.XPATH # xPath TODO: Implement
+    ```    
+    - __[Element](/py_adb/element.py)__
+    ```python
+    from py_adb.element import Element
+    
+    Element.tap("<Device ID>") # Method to tap on the Element
+    Element.type_text("<Device ID>", "<text>") # Send text to Element TODO: Test, Add check for Element
+    ```
 - __[Utility:](/py_adb/util.py)__
 ```python
 from py_adb.util import Path

@@ -9,6 +9,10 @@ __pycache__/
 # XML
 *.xml
 
+# IDEA, VS_Code
+.idea/
+.vscode/
+
 # Distribution / packaging
 .Python
 build/
