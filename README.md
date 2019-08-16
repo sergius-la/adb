@@ -81,9 +81,13 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `delete(path_file)`
   - `clear_dir(path_dir)`
 - __[Package info:](/py_adb/package_info.py)__
-  - `get_list_packages()`
-  - `is_package_exist(dev_id, package)`
-  - `get_packahe_version(package)`
+    ```python
+  from py_adb.package_info import PackageInfo
+  
+  PackageInfo.get_list_packages("<Device ID>") # List of installed apps
+  PackageInfo.is_package_exist("<Device ID>", "package.name") # Check is package installed
+  PackageInfo.get_package_version("<Device ID>", "package.name") # Get version of package
+    ```
 - __[Package manipulations:](/py_adb/package_manipulations.py)__
   - `clear_package_cache(package)`
   - `install_app(path_package)`
