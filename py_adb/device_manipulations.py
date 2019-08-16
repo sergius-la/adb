@@ -6,6 +6,7 @@ from py_adb.android_keyevent import AndroidKeyevent
 from enum import Enum, auto
 import time
 
+
 class UnlockType(Enum):
     SWIPE = auto()
 

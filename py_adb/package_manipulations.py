@@ -44,7 +44,6 @@ class PackageManipulations:
         command = "adb -s {dev_id} shell am startservice {package}".format(dev_id=dev_id, package=package)
         ADB.exec_adb(command)
 
-        
     @staticmethod
     def grant_permission(dev_id: str, package: str, *android_permissions):
         """

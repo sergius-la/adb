@@ -54,15 +54,26 @@ class Element(object):
     def _bounds_parser(str_bounds: str) -> list:
         """
         Helper method to parce string like [8,56][712,165]
-        and return a list of int [8, 56, 712, 165]
+        :param str_bounds:
+        :return list of int [8, 56, 712, 165]:
         """
 
         raw = str_bounds.replace("[", "").replace("]", ",").split(",")
         return list(map(int, list(filter(None, raw))))
     
-    def tap(self, dev_id):
+    def tap(self, dev_id: str):
         """
         Method to tap on the element
         """
 
         DeviceManipulations.tap(dev_id, self.x, self.y)
+
+    def type_text(self, dev_id: str, text: str):
+        """
+        Method send text to the Element
+
+        :param dev_id:
+        :param text:
+        """
+
+        DeviceManipulations.send_text(dev_id, text)
