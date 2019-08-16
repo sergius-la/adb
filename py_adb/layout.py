@@ -2,6 +2,7 @@ from py_adb.adb import ADB
 from py_adb.files import Files
 from py_adb.element import Element
 from py_adb.util import Path
+from py_adb.by import By
 
 import xml.etree.ElementTree as ET
 import os
@@ -32,6 +33,8 @@ class Layout:
     def save_layout(dev_id: str, path_save: str) -> str:
         """
         Method save XML layout of current device screen, return path to saved file
+
+        :dev_id - Device Id:
         """
         
         path_layout = Layout._dump_layout(dev_id)
@@ -40,18 +43,23 @@ class Layout:
             return os.path.join(path_save, path_layout.split("/")[2])
     
     @staticmethod
-    def get_element(path_file: str, id: str) -> Element:
+    def get_element(path_file: str, by) -> Element:
         """
         Method to search Element in the XML layout, return dict with element
 
         TODO: Add Search Generic Search
         """
 
+        # assert isinstance(by, By), ""
         root = ET.parse(path_file).getroot()
-        for child in root.iter():
-            el_resource_id = child.attrib.get("resource-id")
-            if el_resource_id is not None and len(el_resource_id) > 0 and id in el_resource_id:
-                return Element(child)
+        if by is by.ID:
+            for child in root.iter():
+                el_resource_id = child.attrib.get("resource-id")
+                if el_resource_id is not None and len(el_resource_id) > 0 and id in el_resource_id:
+                    return Element(child)
+        elif by is by.XPATH:
+            print("E: Not supported")
+            raise ValueError
 
 
 if __name__ == "__main__":
