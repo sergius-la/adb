@@ -100,8 +100,10 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `grant_permission(package_name, permissions)`
   - `revoke_permission(package_name, permissions)`
 - __[Packages](/py_adb/android_packages.py)__
-- [__`Layout - UI Interacting`__](/py_adb/layout.py)    
-    - [__`Element Interacting`__](/py_adb/element.py)
+- [__`Layout - UI Interacting`__](/py_adb/layout.py)
+    
+    - [__`Element`__](/py_adb/element.py)
+    
     ```python
   from py_adb.layout import Layout
   from py_adb.by import By
@@ -109,7 +111,9 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   element = Layout.get_element(By.ID, "<resource-id>")
   element.tap("<Device ID>")
     ```
+  
   - [__`By - Element search strategy`__](/py_adb/by.py)
+ 
    ```python
   from py_adb.by import By
   
