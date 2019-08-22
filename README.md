@@ -100,37 +100,24 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `grant_permission(package_name, permissions)`
   - `revoke_permission(package_name, permissions)`
 - __[Packages](/py_adb/android_packages.py)__
-- __[Layout:](/py_adb/layout.py)__
+- [__`Layout - UI Interacting`__](/py_adb/layout.py)    
+    - [__`Element Interacting`__](/py_adb/element.py)
     ```python
   from py_adb.layout import Layout
-    
-  Layout.save_layout("<Device ID>", "PATH_to_save") # Save the XML layout, from Device
-  Layout.get_element("PATH_to_xml_layout", "element_id") # Get element from sXML layout
-  # TODO: Search multiple elements
+  from py_adb.by import By
+      
+  element = Layout.get_element(By.ID, "<resource-id>")
+  element.tap("<Device ID>")
     ```
-   - __[By:](/py_adb/by.py)__
-    ```python
+  - [__`By - Element search strategy`__](/py_adb/by.py)
+   ```python
   from py_adb.by import By
   
   # Search Element strategy  
   By.ID # Element id
   By.XPATH # xPath TODO: Implement
-    ```    
-    - __[Element](/py_adb/element.py)__
-    ```python
-    from py_adb.element import Element
-    
-    Element.tap("<Device ID>") # Method to tap on the Element
-    Element.type_text("<Device ID>", "<text>") # Send text to Element TODO: Test, Add check for Element
-    ```
-- __[Utility:](/py_adb/util.py)__
-```python
-from py_adb.util import Path
-
-# Paths to Dirs
-Path.PROCESSING_FILES # Processing Files 
-Path.TEST_FILES # Unit tests
-```
+   ```
+  - TODO: Add multiple search strategy
 
 ## Unit Tests
 
