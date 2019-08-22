@@ -9,6 +9,7 @@ class Identify(object):
     _package = os.path.abspath(os.path.dirname(__file__))
     _test_files = os.path.join(_root, "tests", "test_files")
     _processing_files = os.path.join(_root, "processing_files")
+    _default_layout = os.path.join(_processing_files, "window_dump.xml")
 
     @staticmethod
     def path_root():
@@ -28,9 +29,14 @@ class Identify(object):
             os.makedirs(Identify._processing_files)
         return Identify._processing_files
 
+    @staticmethod
+    def path_default_layout():
+        return Identify._default_layout
+
 
 class Path(Enum):
     TEST_FILES = Identify.path_test_files()
     PY_ADB = Identify.path_package()
     ROOT = Identify.path_root()
     PROCESSING_FILES = Identify.path_processing_files()
+    DEFAULT_LAYOUT_XML = Identify.path_default_layout()

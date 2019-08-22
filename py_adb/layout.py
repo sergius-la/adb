@@ -4,7 +4,7 @@ from py_adb.element import Element
 from py_adb.util import Path
 from py_adb.by import By
 
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ElementTree
 import os
 
 
@@ -43,40 +43,23 @@ class Layout:
             return os.path.join(path_save, path_layout.split("/")[2])
     
     @staticmethod
-    def get_element(path_file: str, by) -> Element:
+    def get_element(by: By, locator: str) -> Element:
         """
         Method to search Element in the XML layout, return dict with element
 
         TODO: Add Search Generic Search
         """
 
-        # assert isinstance(by, By), ""
-        root = ET.parse(path_file).getroot()
+        path_to_xml = Path.DEFAULT_LAYOUT_XML.value
+        assert isinstance(by, By)
+
         if by is by.ID:
+            root = ElementTree.parse(path_to_xml).getroot()
             for child in root.iter():
                 el_resource_id = child.attrib.get("resource-id")
-                if el_resource_id is not None and len(el_resource_id) > 0 and id in el_resource_id:
+                if el_resource_id is not None and len(el_resource_id) > 0 and locator in el_resource_id:
                     return Element(child)
         elif by is by.XPATH:
-            print("E: Not supported")
-            raise ValueError
-
-
-if __name__ == "__main__":
-    dev_id = ADB.get_connected_devices(is_connected=True)[0]
-
-    Layout.save_layout(dev_id, Path.PROCESSING_FILES.value)
-# #
-# #     # [616, 48][720, 144]
-# #
-#     p = os.path.join(Path.PROC_FILES.value, "window_dump.xml")
-#     elem = Layout.get_element(p, "com.google.android.youtube:id/mobile_topbar_avatar")
-#     print(type(elem))
-#     print(elem)
-# #     # print(elem.get("resource-id"))
-# #     element = Element(raw_elem)
-# #     print(element._center_point)
-#     elem.tap(dev_id)
-# #     # print(element.tap(dev_id))
-# #     #
-# #     # print(x.get("bounds"))
+            root = ElementTree.parse(path_to_xml)
+            raw = root.find(locator)
+            return Element(raw)
