@@ -61,5 +61,6 @@ class Layout:
                     return Element(child)
         elif by is by.XPATH:
             root = ElementTree.parse(path_to_xml)
-            raw = root.find(locator)
+            # Bug in the xml.etree.ElementTree, remove . after bug will be fixed
+            raw = root.find(".{}".format(locator))
             return Element(raw)
