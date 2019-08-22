@@ -102,8 +102,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 - __[Packages](/py_adb/android_packages.py)__
 - [__`Layout - UI Interacting`__](/py_adb/layout.py)
     
-    - [__`Element`__](/py_adb/element.py)
-    
+    - [__Element__](/py_adb/element.py)
     ```python
   from py_adb.layout import Layout
   from py_adb.by import By
@@ -112,8 +111,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   element.tap("<Device ID>")
     ```
   
-  - [__`By - Element search strategy`__](/py_adb/by.py)
- 
+  - [__By - Element search strategy__](/py_adb/by.py)
    ```python
   from py_adb.by import By
   
