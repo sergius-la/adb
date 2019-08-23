@@ -25,18 +25,6 @@ dev_id = ADB.get_connected_devices()[0]
 ADB.swipe(dev_id, 370, 1200, 370, 160)
 ```
 
-- TODO: Add more examples
-
-## Package methods
-
-### Cookbook
-- __[Info:](/py_adb/cookbook.py)__
-    - `get_environment(package)`
-    - `get_packages_version(AndroidPackage)`
-      - [_All AndroidPackages_](/py_adb/android_packages.py)
-        - _`YouTube`_
-        - _`Play Store`_
-
 ***
 
 ###  Commands
