@@ -44,15 +44,28 @@ Install with PIP <br>
   from py_adb.device_info import DeviceInfo
   from py_adb.android_properties import Properties
   
-  pid = DeviceInfo.get_pid("<Device ID>", "package.name")
-  meminfo = DeviceInfo.get_meminfo("<Device ID>") # Device memory information
-  package_meminfo = DeviceInfo.get_meminfo("<Device ID>", "pid / package.name") # Device memory information
-  DeviceInfo.save_meminfo("path_to_sane", "<Device ID>") # Device
-  DeviceInfo.save_meminfo("path_to_sane", "<Device ID>", "pid / package.name") # Package
-  current_activity = DeviceInfo.get_current_activity("<Device ID>") # Get current activity and package {activity, package}
-  display_size = DeviceInfo.get_display_size("<Device ID>") # Get device display size {width, height}
-  all_properties = DeviceInfo.all_getprop("<Device ID>") # All Android Properties in dict
-  specific_property = DeviceInfo.get_prop("<Device ID>", Properties.MODEL, Properties.ANDROID_VERSION) # Get specific Android Property
+  # Get current activity and package {activity, package}
+  current_activity = DeviceInfo.get_current_activity("<Device ID>")
+  
+  # Device memory usage
+  meminfo = DeviceInfo.get_meminfo("<Device ID>") 
+  # Package memory information
+  package_meminfo = DeviceInfo.get_meminfo("<Device ID>", "pid / package.name")
+  # Save device memory usage
+  DeviceInfo.save_meminfo("path_to_sane", "<Device ID>") 
+  # Save package memory usage
+  DeviceInfo.save_meminfo("path_to_sane", "<Device ID>", "pid / package.name") 
+  
+  # All Android Properties in dict
+  all_properties = DeviceInfo.all_getprop("<Device ID>") 
+  # Get specific Android Property
+  specific_property = DeviceInfo.get_prop("<Device ID>", Properties.MODEL, Properties.ANDROID_VERSION)
+  
+  # Get package ID
+  pid = DeviceInfo.get_pid("<Device ID>", "package.name") 
+  
+  # Get device display size {width, height} 
+  display_size = DeviceInfo.get_display_size("<Device ID>")
   ```
   - [_All Properties_](/py_adb/android_properties.py)
     - _`Android Version`_
