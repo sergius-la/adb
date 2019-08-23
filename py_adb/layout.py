@@ -47,7 +47,7 @@ class Layout:
         """
         Method to search Element in the XML layout, return dict with element
 
-        TODO: Add Search Generic Search
+        TODO: Split element search xPath, ID
         """
 
         path_to_xml = Path.DEFAULT_LAYOUT_XML.value

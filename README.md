@@ -40,12 +40,17 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
 ***
 
 ###  Commands
-- TODO: Main Runner
-- __[ADB:](/py_adb/adb.py)__
-  - `get_connected_devices()`
-  - TODO: Add Dependensys into setup.py
+- TODO: Add Dependencies into `setup.py`
+- TODO: __`Runner`__
+- [__`ADB`__](/py_adb/adb.py)
+  ```python
+  from py_adb.adb import ADB
+  
+  authorised_devices = ADB.get_connected_devices()
+  all_connected_devices = ADB.get_connected_devices(False)
+  ```
 - __[Device info:](/py_adb/device_info.py)__
-  - `get_PID(process_name)`dd
+  - `get_PID(process_name)`
   - `get_meminfo(package)`
   - `save_meminfo(path, package)`
   - `get_package_activity()`
@@ -101,7 +106,7 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   - `revoke_permission(package_name, permissions)`
 - __[Packages](/py_adb/android_packages.py)__
 - [__`Layout - UI Interacting`__](/py_adb/layout.py)
-    
+    - TODO: Search multiple elements
     - [__Element__](/py_adb/element.py)
     ```python
   from py_adb.layout import Layout
@@ -119,7 +124,6 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   By.ID # Element id
   By.XPATH # xPath TODO: Implement
    ```
-  - TODO: Add multiple search strategy
 
 ## Unit Tests
 
