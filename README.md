@@ -15,19 +15,21 @@ TODO: Add tests status
 Install with PIP <br>
 `pip install git+https://github.com/sergius-la/adb.git`
 
-## Usage
+***
 
-Usage example:
-```python
-from py_adb.adb import ADB
+### Cookbook
 
-dev_id = ADB.get_connected_devices()[0]
-ADB.swipe(dev_id, 370, 1200, 370, 160)
-```
+- __[Info:](/py_adb/cookbook.py)__
+    - `get_environment(package)`
+    - `get_packages_version(AndroidPackage)`
+      - [_All AndroidPackages_](/py_adb/android_packages.py)
+        - _`YouTube`_
+        - _`Play Store`_
 
 ***
 
 ###  Commands
+
 - TODO: Add Dependencies into `setup.py`
 - TODO: __`Runner`__
 - [__`ADB`__](/py_adb/adb.py)
