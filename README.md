@@ -49,14 +49,21 @@ ADB.swipe(dev_id, 370, 1200, 370, 160)
   authorised_devices = ADB.get_connected_devices()
   all_connected_devices = ADB.get_connected_devices(False)
   ```
-- __[Device info:](/py_adb/device_info.py)__
-  - `get_PID(process_name)`
-  - `get_meminfo(package)`
-  - `save_meminfo(path, package)`
-  - `get_package_activity()`
-  - `get_display_size(Device ID)`
-  - `all_getprop(Device ID)`
-  - `get_prop(Device ID, Properties)`
+- [__`Device info`__](/py_adb/device_info.py)
+  ```python
+  from py_adb.device_info import DeviceInfo
+  from py_adb.android_properties import Properties
+  
+  pid = DeviceInfo.get_pid("<Device ID>", "package.name")
+  meminfo = DeviceInfo.get_meminfo("<Device ID>") # Device memory information
+  package_meminfo = DeviceInfo.get_meminfo("<Device ID>", "pid / package.name") # Device memory information
+  DeviceInfo.save_meminfo("path_to_sane", "<Device ID>") # Device
+  DeviceInfo.save_meminfo("path_to_sane", "<Device ID>", "pid / package.name") # Package
+  current_activity = DeviceInfo.get_current_activity("<Device ID>") # Get current activity and package {activity, package}
+  display_size = DeviceInfo.get_display_size("<Device ID>") # Get device display size {width, height}
+  all_properties = DeviceInfo.all_getprop("<Device ID>") # All Android Properties in dict
+  specific_property = DeviceInfo.get_prop("<Device ID>", Properties.MODEL, Properties.ANDROID_VERSION) # Get specific Android Property
+  ```
   - [_All Properties_](/py_adb/android_properties.py)
     - _`Android Version`_
     - _`Device Brand`_

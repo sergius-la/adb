@@ -5,6 +5,7 @@ from py_adb.layout import Layout
 from py_adb.files import Files
 from py_adb.util import Path
 
+
 class TestLayout(object):
     """
     Unit Tests for Layout
@@ -21,3 +22,11 @@ class TestLayout(object):
         path_to_file = Layout.save_layout(dev_id, Path.TEST_FILES.value)
         print("I: Path to file - {}".format(path_to_file))
         assert os.path.isfile(path_to_file)
+
+    def test_get_element_id(self):
+        # TODO: Add test
+        pass
+
+    def test_get_element_xpath(self):
+        # TODO: Add test
+        pass
